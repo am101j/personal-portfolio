@@ -10,7 +10,8 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { Send } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useActionState } from 'react';
+import { sendContactEmailAction, ContactActionState } from '@/app/actions';
 
 const contactFormSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters.'),
@@ -21,7 +22,6 @@ const contactFormSchema = z.object({
 type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 export function ContactSection() {
-  const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
@@ -32,19 +32,27 @@ export function ContactSection() {
     },
   });
 
-  const onSubmit = (data: ContactFormValues) => {
-    setIsLoading(true);
-    console.log('Form submitted:', data);
-    // Simulate API call
-    setTimeout(() => {
-      setIsLoading(false);
+  const [state, formAction, isPending] = useActionState(sendContactEmailAction, {
+    error: undefined,
+    success: false,
+  });
+
+  useEffect(() => {
+    if (state.success) {
       toast({
         title: "Message Sent!",
         description: "Thank you for reaching out. I'll get back to you soon.",
       });
       form.reset();
-    }, 1000);
-  };
+    }
+    if (state.error) {
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: state.error,
+      });
+    }
+  }, [state, form, toast]);
 
   return (
     <section id="contact" className="py-8 md:py-12">
@@ -56,7 +64,7 @@ export function ContactSection() {
           Have a question or want to work together? Leave a message.
         </p>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 text-left">
+          <form action={formAction} className="space-y-4 text-left">
             <FormField
               control={form.control}
               name="name"
@@ -96,9 +104,9 @@ export function ContactSection() {
                 </FormItem>
               )}
             />
-            <Button type="submit" className="w-full" disabled={isLoading}>
-              {isLoading ? "Sending..." : "Send Message"}
-              {!isLoading && <Send className="ml-2 h-4 w-4" />}
+            <Button type="submit" className="w-full" disabled={isPending || (form.formState.isSubmitSuccessful && state.success)}>
+              {isPending ? "Sending..." : "Send Message"}
+              {!isPending && <Send className="ml-2 h-4 w-4" />}
             </Button>
           </form>
         </Form>
