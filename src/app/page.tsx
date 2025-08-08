@@ -103,7 +103,6 @@ export default function Home() {
 
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
             <div className="space-y-12 md:space-y-16 mt-4">
-              <ResumeTailorSection />
               <SkillsSection />
               <EducationSection />
               <ContactSection />
