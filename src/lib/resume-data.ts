@@ -160,7 +160,7 @@ Certifications: IDEA Silver Award- Digital and Enterprise Skills. Qualified for 
       ],
       link: '#',
       github: 'https://github.com/am101j/ai_finance_agent.git',
-      image: 'https://postimg.cc/tZ5Jfqx1',
+      image: 'https://i.postimg.cc/NFhXKLGx/temp-Image6-HDS5m.avif',
       "data-ai-hint": "personal finance dashboard"
     },
     {
@@ -174,7 +174,7 @@ Certifications: IDEA Silver Award- Digital and Enterprise Skills. Qualified for 
       ],
       link: '#',
       github: 'https://github.com/Pear277/BillingAnomolyFixer',
-      image: 'https://i.postimg.cc/NFhXKLGx/temp-Image6-HDS5m.avif',
+      image: 'https://i.postimg.cc/wv4nvzRV/billing.png',
       "data-ai-hint": "AI dashboard",
     },
     {
