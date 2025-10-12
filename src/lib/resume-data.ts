@@ -136,7 +136,7 @@ Certifications: IDEA Silver Award- Digital and Enterprise Skills. Qualified for 
       ],
       link: 'https://climatelens.vercel.app',
       github: 'https://github.com/am101j/climatelens',
-      image: 'https://i.postimg.cc/3N4RV4FX/climatelens.png',
+      image: 'https://postimg.cc/BXfHR6kG',
       "data-ai-hint": "climate intelligence app"
     },
     {
