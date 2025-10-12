@@ -136,7 +136,7 @@ Certifications: IDEA Silver Award- Digital and Enterprise Skills. Qualified for 
       ],
       link: 'https://climatelens.vercel.app',
       github: 'https://github.com/am101j/climatelens',
-      image: 'https://postimg.cc/BXfHR6kG',
+      image: 'https://i.postimg.cc/qMzwh6Gg/temp-Image-Umv7bt.avif',
       "data-ai-hint": "climate intelligence app"
     },
     {
@@ -174,7 +174,7 @@ Certifications: IDEA Silver Award- Digital and Enterprise Skills. Qualified for 
       ],
       link: '#',
       github: 'https://github.com/Pear277/BillingAnomolyFixer',
-      image: 'https://i.postimg.cc/wv4nvzRV/billing.png',
+      image: 'https://i.postimg.cc/NFhXKLGx/temp-Image6-HDS5m.avif',
       "data-ai-hint": "AI dashboard",
     },
     {
