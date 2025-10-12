@@ -120,6 +120,50 @@ Certifications: IDEA Silver Award- Digital and Enterprise Skills. Qualified for 
   ],
   projects: [
     {
+      title: 'ClimateLens 🌍',
+      summary: 'AI-powered web app for climate risk and environmental insights by location, with AI-generated PDF reports.',
+      technologies: [
+        'React', 'Vite', 'TailwindCSS', 'Vercel Analytics', 'FastAPI', 'Python', 'OpenAI API', 'Matplotlib', 'ReportLab', 'Poetry', 'CORS', 'dotenv'
+      ],
+      description: [
+        'Enter an address to preview climate data: temperature trends, flooding risks, sustainability metrics, and more.',
+        'Download detailed, AI-generated PDF reports for any location.',
+        'Combines data visualization, automated report generation, and an intuitive interface.',
+        'Frontend: React, Vite, TailwindCSS, Vercel Analytics, deployed on Vercel.',
+        'Backend: FastAPI, Python, OpenAI API, Matplotlib, ReportLab, deployed on Render.',
+        'AI: OpenAI GPT models for analysis and text generation.',
+        'Other: Poetry for Python dependency management, CORS middleware, dotenv for environment management.'
+      ],
+      link: 'https://climatelens.vercel.app',
+      github: 'https://github.com/am101j/climatelens',
+      image: 'https://i.postimg.cc/3N4RV4FX/climatelens.png',
+      "data-ai-hint": "climate intelligence app"
+    },
+    {
+      title: 'AI Personal Finance Manager',
+      summary: 'Intelligent personal finance management system with AI-powered analysis, real-time banking data, forecasting, and automated subscription management.',
+      technologies: [
+        'React', 'Recharts', 'Plaid API', 'Axios', 'FastAPI', 'Python', 'LangGraph', 'Groq LLM', 'Supabase', 'Prophet', 'PostgreSQL'
+      ],
+      description: [
+        'Plaid API integration for secure connection to 11,000+ banks and real-time transaction sync.',
+        'Automatic transaction categorization, multi-account support, and balance tracking.',
+        'AI-powered chat agent for natural language financial queries and advice.',
+        '2-week spending forecasting using Prophet time series analysis.',
+        'AI identifies recurring payments and subscriptions, with automated subscription management.',
+        'Interactive React dashboard with real-time charts and spending trends by category.',
+        'Automated budget alerts and predictive analytics for future expenses.',
+        'Negotiation automation: generates and sends discount request emails for subscriptions.',
+        'Finds cheaper alternatives and tracks potential savings opportunities.',
+        'Backend: FastAPI, LangGraph, Groq LLM, Supabase/PostgreSQL, Prophet.',
+        'Frontend: React 18, Recharts, Plaid Link, Axios.'
+      ],
+      link: '#',
+      github: 'https://github.com/am101j/ai_finance_agent.git',
+      image: 'https://postimg.cc/tZ5Jfqx1',
+      "data-ai-hint": "personal finance dashboard"
+    },
+    {
       title: 'AI Billing Anomaly Reporter',
       summary: 'AI agent to process bills, detect anomalies, and flag inconsistencies, reducing manual review by 50%.',
       technologies: ['FastAPI', 'CrewAI', 'Tensorflow', 'React'],
