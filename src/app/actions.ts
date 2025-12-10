@@ -7,18 +7,18 @@ import { Resend } from 'resend';
 import { EmailTemplate } from '@/components/email-template';
 import { resumeData } from '@/lib/resume-data';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 const tailorResumeSchema = z.object({
   jobDescription: z.string().min(100, "Job description must be at least 100 characters."),
 });
 
 export interface TailorResumeActionState {
-    formData?: {
-        jobDescription: string;
-    },
-    error?: string,
-    tailoredResume?: TailorResumeOutput
+  formData?: {
+    jobDescription: string;
+  },
+  error?: string,
+  tailoredResume?: TailorResumeOutput
 }
 
 export async function tailorResumeAction(
@@ -26,7 +26,7 @@ export async function tailorResumeAction(
   formData: FormData,
 ): Promise<TailorResumeActionState> {
   const jobDescription = formData.get('jobDescription') as string;
-  
+
   const validatedFields = tailorResumeSchema.safeParse({
     jobDescription: jobDescription,
   });
@@ -43,14 +43,14 @@ export async function tailorResumeAction(
   try {
     const tailoredResume = await tailorResume({ jobDescription });
     return { tailoredResume };
-  } catch(e: any) {
-     console.error("Error tailoring resume:", e);
-     return {
-        formData: {
-          jobDescription
-        },
-        error: e.message || "An unknown error occurred."
-     }
+  } catch (e: any) {
+    console.error("Error tailoring resume:", e);
+    return {
+      formData: {
+        jobDescription
+      },
+      error: e.message || "An unknown error occurred."
+    }
   }
 }
 
@@ -62,8 +62,8 @@ const contactFormSchema = z.object({
 });
 
 export interface ContactActionState {
-    error?: string;
-    success?: boolean;
+  error?: string;
+  success?: boolean;
 }
 
 export async function sendContactEmailAction(
@@ -73,7 +73,7 @@ export async function sendContactEmailAction(
   const name = formData.get('name') as string;
   const email = formData.get('email') as string;
   const message = formData.get('message') as string;
-  
+
   const validatedFields = contactFormSchema.safeParse({ name, email, message });
 
   if (!validatedFields.success) {
@@ -81,7 +81,7 @@ export async function sendContactEmailAction(
     return { error: 'Invalid form data.' };
   }
 
-  if (!process.env.RESEND_API_KEY) {
+  if (!process.env.RESEND_API_KEY || !resend) {
     console.error('RESEND_API_KEY is not set.');
     return { error: 'The server is not configured to send emails.' };
   }

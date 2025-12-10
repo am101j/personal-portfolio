@@ -94,33 +94,51 @@ Certifications: IDEA Silver Award- Digital and Enterprise Skills. Qualified for 
       ],
     },
     {
-        company: 'Siemens',
-        role: 'Technology Intern',
-        duration: 'May 2023',
-        location: 'London, United Kingdom',
-        technologies: ['A/B Testing', 'Digital Twin', 'IoT', 'Hardware Integration'],
-        description: [
-          'Implemented an A/B testing framework for industrial control systems, improving feedback loop efficiency by 12%.',
-          'Calibrated digital twin models for manufacturing equipment, achieving 85% accuracy in predicting maintenance needs.',
-          'Validated next-gen IoT sensor technologies through software-hardware integration testing.',
-        ],
+      company: 'Siemens',
+      role: 'Technology Intern',
+      duration: 'May 2023',
+      location: 'London, United Kingdom',
+      technologies: ['A/B Testing', 'Digital Twin', 'IoT', 'Hardware Integration'],
+      description: [
+        'Implemented an A/B testing framework for industrial control systems, improving feedback loop efficiency by 12%.',
+        'Calibrated digital twin models for manufacturing equipment, achieving 85% accuracy in predicting maintenance needs.',
+        'Validated next-gen IoT sensor technologies through software-hardware integration testing.',
+      ],
     },
     {
-        company: 'GeeseHacks',
-        role: 'Software Engineer',
-        duration: 'January 2025',
-        location: 'Waterloo, Canada',
-        technologies: ['React', 'Python', 'GraphQL', 'ETL', 'OOP'],
-        description: [
-            'Developed a high-traffic web app serving 500+ students to find optimal study spaces.',
-            'Engineered an end-to-end recommendation system with ETL pipelines, achieving an 82% user satisfaction rate.',
-            'Built a responsive React frontend with live campus mapping, supporting over 1000 queries daily.',
-        ],
+      company: 'GeeseHacks',
+      role: 'Software Engineer',
+      duration: 'January 2025',
+      location: 'Waterloo, Canada',
+      technologies: ['React', 'Python', 'GraphQL', 'ETL', 'OOP'],
+      description: [
+        'Developed a high-traffic web app serving 500+ students to find optimal study spaces.',
+        'Engineered an end-to-end recommendation system with ETL pipelines, achieving an 82% user satisfaction rate.',
+        'Built a responsive React frontend with live campus mapping, supporting over 1000 queries daily.',
+      ],
     },
   ],
   projects: [
     {
-      title: 'ClimateLens 🌍',
+      title: 'RiskPulse AI',
+      summary: 'Enterprise loan default prediction platform using XGBoost ML with 75%+ accuracy, OCR document processing, and real-time risk assessment for financial institutions.',
+      technologies: ['Next.js 15', 'TypeScript', 'Tailwind CSS', 'Python', 'XGBoost', 'Pandas', 'NumPy', 'Scikit-learn', 'Tesseract.js', 'Recharts', 'Radix UI'],
+      description: [
+        'Real-time risk assessment with instant loan default probability calculation.',
+        'OCR document processing to extract data from loan applications automatically.',
+        'XGBoost ML model trained on 150K+ samples achieving 75%+ prediction accuracy.',
+        'Batch processing capability to analyze hundreds of applications simultaneously.',
+        'Interactive risk modeling with real-time parameter adjustment and scenario testing.',
+        'Enterprise-grade TypeScript architecture with full type safety and RESTful APIs.',
+        'Banking-grade professional UI/UX with responsive design and comprehensive analytics.'
+      ],
+      link: '#',
+      github: 'https://github.com/am101j/loan-default',
+      image: 'https://i.postimg.cc/gJN38zWv/demo.png',
+      "data-ai-hint": "loan risk dashboard"
+    },
+    {
+      title: 'ClimateLens',
       summary: 'AI-powered web app for climate risk and environmental insights by location, with AI-generated PDF reports.',
       technologies: [
         'React', 'Vite', 'TailwindCSS', 'Vercel Analytics', 'FastAPI', 'Python', 'OpenAI API', 'Matplotlib', 'ReportLab', 'Poetry', 'CORS', 'dotenv'
@@ -138,6 +156,20 @@ Certifications: IDEA Silver Award- Digital and Enterprise Skills. Qualified for 
       github: 'https://github.com/am101j/climatelens',
       image: 'https://i.postimg.cc/qMzwh6Gg/temp-Image-Umv7bt.avif',
       "data-ai-hint": "climate intelligence app"
+    },
+    {
+      title: 'AI Billing Anomaly Reporter',
+      summary: 'AI agent to process bills, detect anomalies, and flag inconsistencies, reducing manual review by 50%.',
+      technologies: ['FastAPI', 'CrewAI', 'Tensorflow', 'React'],
+      description: [
+        'Built an AI agent to process 500+ bills, achieving 90% anomaly detection accuracy.',
+        'Reduced manual bill review time by 50% using RAG-enhanced LLMs.',
+        'Flagged over £20K in billing inconsistencies automatically.'
+      ],
+      link: '#',
+      github: 'https://github.com/Pear277/BillingAnomolyFixer',
+      image: 'https://i.postimg.cc/wv4nvzRV/billing.png',
+      "data-ai-hint": "AI dashboard",
     },
     {
       title: 'AI Personal Finance Manager',
@@ -164,18 +196,39 @@ Certifications: IDEA Silver Award- Digital and Enterprise Skills. Qualified for 
       "data-ai-hint": "personal finance dashboard"
     },
     {
-      title: 'AI Billing Anomaly Reporter',
-      summary: 'AI agent to process bills, detect anomalies, and flag inconsistencies, reducing manual review by 50%.',
-      technologies: ['FastAPI', 'CrewAI', 'Tensorflow', 'React'],
+      title: 'Healthcare Dashboard',
+      summary: 'Power BI dashboard for monitoring hospital performance, patient metrics, billing trends, length of stay, and medication tracking.',
+      technologies: ['Power BI', 'DAX', 'Data Modeling', 'SQL', 'Time Intelligence'],
       description: [
-        'Built an AI agent to process 500+ bills, achieving 90% anomaly detection accuracy.',
-        'Reduced manual bill review time by 50% using RAG-enhanced LLMs.',
-        'Flagged over £20K in billing inconsistencies automatically.'
+        'Comprehensive hospital performance monitoring with total patients and admissions tracking.',
+        'Billing trends analysis with Year-over-Year (%YoY) comparisons for financial insights.',
+        'Average Length of Stay (LOS) metrics for operational efficiency analysis.',
+        'Top hospitals, doctors, and admission types analytics for benchmarking.',
+        'Medication tracking per patient for healthcare compliance monitoring.',
+        'Star schema data model with Fact Hospital, Dim Patient, Dim Hospital, and Dim Medication tables.',
+        'DateTable implementation for advanced time intelligence calculations.'
       ],
       link: '#',
-      github: 'https://github.com/Pear277/BillingAnomolyFixer',
-      image: 'https://i.postimg.cc/wv4nvzRV/billing.png',
-      "data-ai-hint": "AI dashboard",
+      github: 'https://github.com/am101j/health_dashboard',
+      image: 'https://i.postimg.cc/nVTtj6QF/image.png',
+      "data-ai-hint": "healthcare analytics dashboard"
+    },
+    {
+      title: 'PulseAI',
+      summary: 'Real-time patient monitoring system with AI-powered vital sign analysis and automated emergency response.',
+      technologies: ['React', 'TypeScript', 'Python', 'Flask', 'Computer Vision', 'Machine Learning'],
+      description: [
+        'Continuous vital sign tracking with real-time patient assessment capabilities.',
+        'Facial expression analysis using computer vision for patient condition monitoring.',
+        'Intelligent emergency response coordination with automated intervention protocols.',
+        'Machine learning integration for predictive health analytics.',
+        'Telecommunications integration for real-time alerts and notifications.',
+        'Healthcare monitoring platform combining CV, ML, and telecom technologies.'
+      ],
+      link: '#',
+      github: 'https://github.com/sweller226/pulseAI',
+      image: 'https://i.postimg.cc/Qt8Km2Np/Screenshot-2025-12-10-023830.png',
+      "data-ai-hint": "patient monitoring dashboard"
     },
     {
       title: 'Resistor Classification',
@@ -264,6 +317,6 @@ Certifications: IDEA Silver Award- Digital and Enterprise Skills. Qualified for 
     }
   ],
   education: [
-      // Education data could be added here if needed for a separate section
+    // Education data could be added here if needed for a separate section
   ]
 };
