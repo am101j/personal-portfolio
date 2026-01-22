@@ -120,6 +120,33 @@ Certifications: IDEA Silver Award- Digital and Enterprise Skills. Qualified for 
   ],
   projects: [
     {
+      title: 'Communify',
+      summary: 'AI-Powered Accessibility Reporting Platform providing real-time severity assessments and automated municipal routing. (UofTHacks 13 Winner)',
+      technologies: ['Next.js 16', 'Python', 'FastAPI', 'Gemini 2.0', 'LangGraph', 'MongoDB'],
+      description: [
+        'Architected a full-stack reporting pipeline featuring a FastAPI backend and Next.js dashboard to detect urban barriers from images, delivering real-time severity assessments and repair estimates.',
+        'Developed a geospatial routing engine processing live user coordinates via MongoDB Atlas, integrating $geoIntersects indexing to automatically route reports to municipal teams.',
+        'Integrated a multi-agent AI system using LangGraph and Gemini Vision to autonomously validate citizen reports, utilizing vector search (FAISS) for natural language queries.'
+      ],
+      link: 'https://uofthacks-13-nine.vercel.app/',
+      github: 'https://github.com/shauraya-mohan/uofthacks-13',
+      image: 'https://i.postimg.cc/RF0Dm9TD/communify.png',
+      "data-ai-hint": "accessibility ai platform"
+    },
+    {
+      title: 'GoFish',
+      summary: 'AI-powered fishing assistant providing real-time species identification and location-based recommendations. (Delta Hacks Winner)',
+      technologies: ['Next.js 16', 'TypeScript', 'FastAPI', 'Python', 'PyTorch', 'MongoDB', 'MapLibre', 'GeoJSON'],
+      description: [
+        'Developed an AI-powered fishing assistant utilizing Next.js 16 and FastAPI to provide real-time species identification and location-based recommendations for 1,200+ spots.',
+        'Architected a hybrid Computer Vision pipeline using PyTorch (ResNet50) and CLIP embeddings to achieve 92% identification accuracy with sub-200ms processing latency.',
+        'Engineered a real-time recommendation engine synthesizing GeoJSON spatial data and live METAR weather telemetry to calculate dynamic, species-specific ‘Bite Scores’.'
+      ],
+      github: 'https://github.com/asrfz/GoFish',
+      image: 'https://i.postimg.cc/tgnsMV0p/gofish.png',
+      "data-ai-hint": "fishing ai platform"
+    },
+    {
       title: 'RiskPulse AI',
       summary: 'Enterprise loan default prediction platform using XGBoost ML with 75%+ accuracy, OCR document processing, and real-time risk assessment for financial institutions.',
       technologies: ['Next.js 15', 'TypeScript', 'Tailwind CSS', 'Python', 'XGBoost', 'Pandas', 'NumPy', 'Scikit-learn', 'Tesseract.js', 'Recharts', 'Radix UI'],

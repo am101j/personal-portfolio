@@ -1,38 +1,43 @@
-
-'use client';
-
-import Link from "next/link";
-import { Github, Linkedin, User } from "lucide-react";
-import { resumeData } from "@/lib/resume-data";
-import { useState, useEffect } from "react";
+import { resumeData } from '@/lib/resume-data';
+import Link from 'next/link';
+import { Github, Linkedin, Mail } from 'lucide-react';
 
 export function Footer() {
-  const [year, setYear] = useState(new Date().getFullYear());
+    return (
+        <footer className="py-8 px-4 border-t border-border/50">
+            <div className="max-w-4xl mx-auto">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                    <p className="text-sm text-muted-foreground">
+                        © {new Date().getFullYear()} {resumeData.name}. Built with Next.js
+                    </p>
 
-  useEffect(() => {
-    setYear(new Date().getFullYear());
-  }, []);
-
-  return (
-    <footer className="bg-secondary text-secondary-foreground mt-16 border-t">
-      <div className="container mx-auto py-8 px-4 md:px-6 flex flex-col sm:flex-row items-center justify-between">
-        <div className="flex items-center gap-2">
-          <User className="h-5 w-5" />
-          <p className="text-sm">
-            &copy; {year} {resumeData.name}. All rights reserved.
-          </p>
-        </div>
-        <div className="flex items-center gap-4 mt-4 sm:mt-0">
-          <Link href={resumeData.contact.github} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
-            <Github size={20} />
-            <span className="sr-only">GitHub</span>
-          </Link>
-          <Link href={resumeData.contact.linkedin} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
-            <Linkedin size={20} />
-            <span className="sr-only">LinkedIn</span>
-          </Link>
-        </div>
-      </div>
-    </footer>
-  );
+                    <div className="flex items-center gap-4">
+                        <Link
+                            href={resumeData.contact.github}
+                            target="_blank"
+                            className="text-muted-foreground hover:text-primary transition-colors"
+                            aria-label="GitHub"
+                        >
+                            <Github className="w-4 h-4" />
+                        </Link>
+                        <Link
+                            href={resumeData.contact.linkedin}
+                            target="_blank"
+                            className="text-muted-foreground hover:text-primary transition-colors"
+                            aria-label="LinkedIn"
+                        >
+                            <Linkedin className="w-4 h-4" />
+                        </Link>
+                        <Link
+                            href={`mailto:${resumeData.contact.email}`}
+                            className="text-muted-foreground hover:text-primary transition-colors"
+                            aria-label="Email"
+                        >
+                            <Mail className="w-4 h-4" />
+                        </Link>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    );
 }
