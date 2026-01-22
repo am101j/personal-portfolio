@@ -8,6 +8,7 @@ export const resumeData = {
     linkedin: 'https://www.linkedin.com/in/abeer-makin',
     github: 'https://github.com/am101j',
   },
+  resumeUrl: '/Provision Resume Abeer.pdf',
   summary: `a computer science student at the university of waterloo with an interest in building intelligent software solutions. i also enjoy playing guitar and choreographing dance.`,
   stats: {
     yearsOfExperience: 5,
