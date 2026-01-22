@@ -3,6 +3,7 @@
 import { MinimalHeader } from '@/components/minimal-header';
 import { InteractiveTerminal } from '@/components/interactive-terminal';
 import { resumeData } from '@/lib/resume-data';
+import { TechStack } from '@/components/tech-stack';
 import { Github, Linkedin, Mail } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
@@ -142,6 +143,12 @@ export default function HomePage() {
                                     <Mail className="w-5 h-5" />
                                 </Link>
                             </div>
+
+                            {/* Tech Stack Marquee */}
+                            <div className="mt-12 w-full max-w-lg">
+                                <p className="text-xs text-muted-foreground/60 uppercase tracking-wider mb-4">technical arsenal</p>
+                                <TechStack />
+                            </div>
                         </div>
 
                         {/* Right Side - Terminal */}
@@ -151,7 +158,9 @@ export default function HomePage() {
                             </div>
                         </div>
                     </div>
+
                 </section>
+
             </main>
 
             {/* Minimal Footer */}
@@ -160,6 +169,6 @@ export default function HomePage() {
                     <p>© {new Date().getFullYear()} {resumeData.name}</p>
                 </div>
             </footer>
-        </div>
+        </div >
     );
 }
