@@ -36,7 +36,7 @@ export default function HomePage() {
         .slice(0, 2);
 
     return (
-        <div className="flex flex-col min-h-screen bg-[#050505] relative overflow-hidden">
+        <div className="flex flex-col min-h-screen bg-background relative overflow-hidden">
             {/* Cursor glow effect */}
             <div
                 ref={cursorGlowRef}

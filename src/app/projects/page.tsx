@@ -28,17 +28,41 @@ export default function ProjectsPage() {
                 style={{ animationDelay: `${0.1 + index * 0.1}s` }}
               >
                 {/* Project Image */}
-                {project.image && (
-                  <div className="relative aspect-video bg-[#0a0a0a] overflow-hidden">
+                {/* Project Video or Image */}
+                <div className="relative aspect-video bg-[#0a0a0a] overflow-hidden">
+                  {/* @ts-ignore - video property added to resume-data */}
+                  {project.video ? (
+                    /* @ts-ignore */
+                    (project.video.endsWith('.mp4') || project.video.endsWith('.webm')) ? (
+                      <video
+                        /* @ts-ignore */
+                        src={project.video}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                    ) : (
+                      <iframe
+                        /* @ts-ignore */
+                        src={project.video}
+                        className="w-full h-full object-cover"
+                        title={project.title}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    )
+                  ) : project.image ? (
                     <Image
                       src={project.image}
                       alt={project.title}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#111] to-transparent opacity-60" />
-                  </div>
-                )}
+                  ) : null}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#111] to-transparent opacity-60 pointer-events-none" />
+                </div>
 
                 {/* Project Info */}
                 <div className="p-4">

@@ -121,6 +121,20 @@ Certifications: IDEA Silver Award- Digital and Enterprise Skills. Qualified for 
   ],
   projects: [
     {
+      title: 'OffsetAI - Multi-Agent Financial Intelligence Platform',
+      summary: 'Autonomous investment assistant automating financial research by synthesizing live market data, news sentiment, and private portfolio files.',
+      technologies: ['Next.js 14', 'Python', 'FastAPI', 'LangGraph', 'Gemini 2.0', 'Pinecone', 'MCP', 'Supabase'],
+      description: [
+        'Developed an autonomous investment assistant that automates financial research by synthesizing live market data, news sentiment, and private portfolio files into actionable trade signals.',
+        'Architected a **self-correcting multi-agent system** using **LangGraph**, orchestrating a pipeline of specialized agents (Monitor, Critic, Strategist) to validate market trends against **Polymarket** betting odds.',
+        'Engineered a **Privacy-First RAG engine** using **Pinecone** to index regulatory news and **MCP** to securely analyze sensitive local portfolio data without exposing private records to the cloud.'
+      ],
+      link: '#',
+      github: 'https://github.com/am101j/stocks-ai',
+      image: 'https://i.postimg.cc/W4ZFwvCM/demo-stocks.png',
+      "data-ai-hint": "financial ai agent"
+    },
+    {
       title: 'Communify',
       summary: 'AI-Powered Accessibility Reporting Platform providing real-time severity assessments and automated municipal routing. (UofTHacks 13 Winner)',
       technologies: ['Next.js 16', 'Python', 'FastAPI', 'Gemini 2.0', 'LangGraph', 'MongoDB'],

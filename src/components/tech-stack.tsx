@@ -42,16 +42,18 @@ const MAIN_STACK = [
 
 const SkillBadge = ({ name }: { name: string }) => {
     const slug = iconSlugs[name] || name.toLowerCase().replace(/[^a-z0-9]/g, '');
-    const iconUrl = `https://cdn.simpleicons.org/${slug}/white`;
+    const iconUrl = `https://cdn.simpleicons.org/${slug}`; // Use default colored icon
     const [imgError, setImgError] = useState(false);
 
     return (
-        <div className="flex items-center gap-2 px-3 py-1.5 bg-secondary/30 backdrop-blur-sm rounded-full border border-white/5 hover:border-primary/20 hover:bg-secondary/50 transition-all duration-300 mx-2 whitespace-nowrap group">
+        <div className="flex items-center gap-2 px-3 py-1.5 bg-secondary/30 backdrop-blur-sm rounded-full border border-border/40 hover:border-primary/20 hover:bg-secondary/50 transition-all duration-300 mx-2 whitespace-nowrap group">
             {!imgError && (
                 <img
                     src={iconUrl}
                     alt=""
-                    className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0"
+                    className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-all 
+                             grayscale group-hover:grayscale-0 
+                             dark:brightness-0 dark:invert dark:group-hover:brightness-100 dark:group-hover:invert-0"
                     onError={() => setImgError(true)}
                 />
             )}

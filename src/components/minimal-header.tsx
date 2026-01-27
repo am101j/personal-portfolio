@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { resumeData } from '@/lib/resume-data';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 export function MinimalHeader() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -46,8 +47,8 @@ export function MinimalHeader() {
                     <Link
                         href="/about"
                         className={`text-sm transition-colors duration-300 ${pathname === '/about'
-                                ? 'text-foreground'
-                                : 'text-muted-foreground hover:text-foreground'
+                            ? 'text-foreground'
+                            : 'text-muted-foreground hover:text-foreground'
                             }`}
                     >
                         About
@@ -55,8 +56,8 @@ export function MinimalHeader() {
                     <Link
                         href="/experience"
                         className={`text-sm transition-colors duration-300 ${pathname === '/experience'
-                                ? 'text-foreground'
-                                : 'text-muted-foreground hover:text-foreground'
+                            ? 'text-foreground'
+                            : 'text-muted-foreground hover:text-foreground'
                             }`}
                     >
                         Experience
@@ -64,16 +65,17 @@ export function MinimalHeader() {
                     <Link
                         href="/projects"
                         className={`text-sm transition-colors duration-300 ${pathname === '/projects'
-                                ? 'text-foreground'
-                                : 'text-muted-foreground hover:text-foreground'
+                            ? 'text-foreground'
+                            : 'text-muted-foreground hover:text-foreground'
                             }`}
                     >
                         Projects
                     </Link>
                 </nav>
 
-                {/* Simple contact link */}
+                {/* Simple contact link + Theme Toggle */}
                 <div className="flex items-center gap-6">
+                    <ThemeToggle />
                     <a
                         href={resumeData.resumeUrl}
                         target="_blank"
