@@ -153,9 +153,7 @@ export default function HomePage() {
 
                         {/* Right Side - Terminal */}
                         <div className="animate-slide-in-right lg:pl-8">
-                            <div className="animate-float">
-                                <InteractiveTerminal />
-                            </div>
+                            <InteractiveTerminal />
                         </div>
                     </div>
 

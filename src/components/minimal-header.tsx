@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { resumeData } from '@/lib/resume-data';
-import { ThemeToggle } from '@/components/theme-toggle';
 
 export function MinimalHeader() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -72,10 +71,8 @@ export function MinimalHeader() {
                         Projects
                     </Link>
                 </nav>
-
-                {/* Simple contact link + Theme Toggle */}
+                {/* Simple contact link */}
                 <div className="flex items-center gap-6">
-                    <ThemeToggle />
                     <a
                         href={resumeData.resumeUrl}
                         target="_blank"

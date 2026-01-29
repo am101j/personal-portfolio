@@ -181,10 +181,10 @@ export function InteractiveTerminal() {
                         <div
                             key={i}
                             className={`mb-1 ${line.type === 'input'
-                                    ? 'text-primary'
-                                    : line.type === 'error'
-                                        ? 'text-red-400'
-                                        : 'text-muted-foreground'
+                                ? 'text-primary'
+                                : line.type === 'error'
+                                    ? 'text-red-400'
+                                    : 'text-muted-foreground'
                                 }`}
                         >
                             <span className="whitespace-pre-wrap">{line.content}</span>
@@ -211,7 +211,7 @@ export function InteractiveTerminal() {
 
             {/* Hint */}
             <p className="text-center text-xs text-muted-foreground mt-4">
-                Try typing <span className="text-primary font-mono">help</span>
+                💡 Click and type <span className="text-primary font-mono">help</span> to explore my background
             </p>
         </div>
     );
