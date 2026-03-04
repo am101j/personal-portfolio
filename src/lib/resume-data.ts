@@ -25,6 +25,10 @@ Frameworks and Libraries: Spring Boot, Node.js, OpenCV, TensorFlow, NumPy, Matpl
 Developer Tools: Git, VS Code, PyCharm, IntelliJ IDEA, Google Cloud Platform, Spark, BigQuery, AWS, DataDog
 
 EXPERIENCE
+Ernst & Young (Feb 2026 – May 2026) | London, United Kingdom
+- Delivered technology consulting engagements across financial services clients, advising on digital transformation and system modernization initiatives
+- Developed data-driven insights and presentations for senior stakeholders, supporting strategic decision-making across enterprise projects
+
 Wipro (May 2025 – August 2025) | Reading, United Kingdom
 - Designed and deployed enterprise onboarding assistant tool with React and Typescript frontend, leveraged by Java Spring Boot APIs and PostgreSQL, serving 1000+ employees and reducing onboarding time by 25%
 - Led development of metric pipelines on GCP with BigQuery for asset risk analysis in the water industry, enabling predictive asset maintenance and preventing £50K in infrastructure failures, through leveraging regression models.
@@ -70,6 +74,17 @@ Certifications: IDEA Silver Award- Digital and Enterprise Skills. Qualified for 
     developerTools: ['Git', 'VS Code', 'PyCharm', 'IntelliJ IDEA', 'GCP', 'Spark', 'BigQuery', 'AWS', 'DataDog'],
   },
   experience: [
+    {
+      company: 'Ernst & Young',
+      role: 'Tech Consulting Intern',
+      duration: 'Feb 2026 – May 2026',
+      location: 'London, United Kingdom',
+      technologies: ['Consulting', 'Digital Transformation', 'Data Analysis', 'Stakeholder Management'],
+      description: [
+        'Delivered technology consulting engagements across financial services clients, advising on digital transformation initiatives.',
+        'Developed data-driven insights and presentations for senior stakeholders, supporting strategic decision-making.',
+      ],
+    },
     {
       company: 'Wipro',
       role: 'Software Engineer Intern',

@@ -23,10 +23,10 @@ export default function HomePage() {
         return () => window.removeEventListener('mousemove', handleMouseMove);
     }, []);
 
-    // Upcoming role (EY)
+    // Upcoming role (Shopify)
     const upcomingRole = {
-        company: 'EY',
-        role: 'Tech Consulting Intern',
+        company: 'Shopify',
+        role: 'Software Engineer Intern',
         status: 'incoming'
     };
 
