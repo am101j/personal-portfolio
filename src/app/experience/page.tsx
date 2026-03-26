@@ -28,14 +28,13 @@ export default function ExperiencePage() {
                 style={{ animationDelay: `${0.1 + index * 0.1}s` }}
               >
                 <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-4">
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-primary group-hover:translate-x-1 transition-transform inline-block">→</span>
+                  <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                    <span className="text-primary group-hover:translate-x-1 transition-transform inline-block flex-shrink-0">→</span>
                     <span className="font-medium text-foreground text-lg group-hover:text-primary transition-colors">
                       {job.role}
                     </span>
-                    <span className="text-muted-foreground">@</span>
-                    <span className="text-primary font-medium">
-                      {job.company}
+                    <span className="text-muted-foreground whitespace-nowrap">
+                      @ <span className="text-primary font-medium">{job.company}</span>
                     </span>
                   </div>
                   <span className="text-sm text-muted-foreground whitespace-nowrap">

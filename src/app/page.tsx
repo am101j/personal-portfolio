@@ -85,15 +85,15 @@ export default function HomePage() {
                                 <p className="text-xs text-muted-foreground/60 uppercase tracking-wider mb-4">experience</p>
                                 <div className="space-y-3">
                                     {/* Incoming EY Role */}
-                                    <div className="flex items-center text-base group cursor-default hover-lift p-3 -ml-3 rounded-lg transition-all">
-                                        <span className="text-primary mr-3 group-hover:translate-x-1 transition-transform">→</span>
+                                    <div className="flex flex-wrap items-center text-base group cursor-default hover-lift p-3 -ml-3 rounded-lg transition-all gap-y-1">
+                                        <span className="text-primary mr-3 flex-shrink-0 group-hover:translate-x-1 transition-transform">→</span>
                                         <span className="text-foreground group-hover:text-primary transition-colors">
                                             {upcomingRole.role}
                                         </span>
-                                        <span className="text-muted-foreground ml-2">
+                                        <span className="text-muted-foreground ml-2 whitespace-nowrap">
                                             @ {upcomingRole.company}
                                         </span>
-                                        <span className="ml-3 px-2 py-0.5 text-[10px] uppercase tracking-wider text-primary/80">
+                                        <span className="ml-3 px-2 py-0.5 text-[10px] uppercase tracking-wider text-primary/80 whitespace-nowrap">
                                             incoming
                                         </span>
                                     </div>
@@ -102,14 +102,14 @@ export default function HomePage() {
                                     {recentExperience.map((job, index) => (
                                         <div
                                             key={index}
-                                            className="flex items-center text-base group cursor-default hover-lift p-3 -ml-3 rounded-lg transition-all"
+                                            className="flex flex-wrap items-center text-base group cursor-default hover-lift p-3 -ml-3 rounded-lg transition-all gap-y-1"
                                             style={{ animationDelay: `${0.3 + index * 0.1}s` }}
                                         >
-                                            <span className="text-primary/50 mr-3 group-hover:translate-x-1 group-hover:text-primary transition-all">→</span>
+                                            <span className="text-primary/50 mr-3 flex-shrink-0 group-hover:translate-x-1 group-hover:text-primary transition-all">→</span>
                                             <span className="text-muted-foreground group-hover:text-foreground transition-colors">
                                                 {job.role}
                                             </span>
-                                            <span className="text-muted-foreground/60 ml-2">
+                                            <span className="text-muted-foreground/60 ml-2 whitespace-nowrap">
                                                 @ {job.company}
                                             </span>
                                         </div>
