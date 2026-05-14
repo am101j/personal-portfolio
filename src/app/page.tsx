@@ -23,17 +23,10 @@ export default function HomePage() {
         return () => window.removeEventListener('mousemove', handleMouseMove);
     }, []);
 
-    // Upcoming role (Shopify)
-    const upcomingRole = {
-        company: 'Shopify',
-        role: 'Software Engineer Intern',
-        status: 'incoming'
-    };
-
     // Filter out GeeseHacks from experience
     const recentExperience = resumeData.experience
         .filter(job => job.company !== 'GeeseHacks')
-        .slice(0, 2);
+        .slice(0, 3);
 
     return (
         <div className="flex flex-col min-h-screen bg-background relative overflow-hidden">
@@ -84,21 +77,6 @@ export default function HomePage() {
                             <div className="mb-10">
                                 <p className="text-xs text-muted-foreground/60 uppercase tracking-wider mb-4">experience</p>
                                 <div className="space-y-3">
-                                    {/* Incoming EY Role */}
-                                    <div className="flex flex-wrap items-center text-base group cursor-default hover-lift p-3 -ml-3 rounded-lg transition-all gap-y-1">
-                                        <span className="text-primary mr-3 flex-shrink-0 group-hover:translate-x-1 transition-transform">→</span>
-                                        <span className="text-foreground group-hover:text-primary transition-colors">
-                                            {upcomingRole.role}
-                                        </span>
-                                        <span className="text-muted-foreground ml-2 whitespace-nowrap">
-                                            @ {upcomingRole.company}
-                                        </span>
-                                        <span className="ml-3 px-2 py-0.5 text-[10px] uppercase tracking-wider text-primary/80 whitespace-nowrap">
-                                            incoming
-                                        </span>
-                                    </div>
-
-                                    {/* Other experience */}
                                     {recentExperience.map((job, index) => (
                                         <div
                                             key={index}

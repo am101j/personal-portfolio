@@ -25,6 +25,10 @@ Frameworks and Libraries: Spring Boot, Node.js, OpenCV, TensorFlow, NumPy, Matpl
 Developer Tools: Git, VS Code, PyCharm, IntelliJ IDEA, Google Cloud Platform, Spark, BigQuery, AWS, DataDog
 
 EXPERIENCE
+Shopify (May 2026 – Present) | Ottawa, Canada
+- Building and shipping features on the Flow Tasks team, enabling merchants to automate complex workflows at scale
+- Contributing to the Shopify Flow automation platform, improving task execution reliability and merchant experience
+
 Ernst & Young (Feb 2026 – May 2026) | London, United Kingdom
 - Delivered technology consulting engagements across financial services clients, advising on digital transformation and system modernization initiatives
 - Developed data-driven insights and presentations for senior stakeholders, supporting strategic decision-making across enterprise projects
@@ -75,10 +79,21 @@ Certifications: IDEA Silver Award- Digital and Enterprise Skills. Qualified for 
   },
   experience: [
     {
+      company: 'Shopify',
+      role: 'Software Engineer Intern',
+      duration: 'May 2026 – Present',
+      location: 'Toronto, Canada',
+      technologies: ['Ruby on Rails', 'React', 'GraphQL', 'TypeScript', 'MySQL', 'Git'],
+      description: [
+        'Building and shipping features on the Flow Tasks team, enabling merchants to automate complex workflows at scale.',
+        'Contributing to the Shopify Flow automation platform, improving task execution reliability and merchant experience.',
+      ],
+    },
+    {
       company: 'Ernst & Young',
       role: 'Tech Consulting Intern',
       duration: 'Feb 2026 – May 2026',
-      location: 'London, United Kingdom',
+      location: 'Toronto, Canada',
       technologies: ['Consulting', 'Digital Transformation', 'Data Analysis', 'Stakeholder Management'],
       description: [
         'Delivered technology consulting engagements across financial services clients, advising on digital transformation initiatives.',
