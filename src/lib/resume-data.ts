@@ -91,13 +91,14 @@ Certifications: IDEA Silver Award- Digital and Enterprise Skills. Qualified for 
     },
     {
       company: 'Ernst & Young',
-      role: 'Tech Consulting Intern',
-      duration: 'Feb 2026 – May 2026',
+      role: 'AI Consulting Intern',
+      duration: 'Feb 2026 – Apr 2026',
       location: 'Toronto, Canada',
-      technologies: ['Consulting', 'Digital Transformation', 'Data Analysis', 'Stakeholder Management'],
+      technologies: ['LangGraph', 'Python', 'Streamlit', 'Azure APIM', 'Microsoft Entra ID'],
       description: [
-        'Delivered technology consulting engagements across financial services clients, advising on digital transformation initiatives.',
-        'Developed data-driven insights and presentations for senior stakeholders, supporting strategic decision-making.',
+        'Architected a multi-agent synthetic data engine using LangGraph (Schema Analyst, Orchestrator, Generator, Executor) to automate testing stubs for enterprise business transformations.',
+        'Developed a Streamlit UI featuring negative data injection, anomaly detection, and agentic feedback loops.',
+        'Engineered SSO integration via Azure APIM and Microsoft Entra ID, unifying disparate AI frontends into a centralized, gamified interface.',
       ],
     },
     {
