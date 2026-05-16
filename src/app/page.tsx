@@ -6,7 +6,49 @@ import { resumeData } from '@/lib/resume-data';
 import { TechStack } from '@/components/tech-stack';
 import { Github, Linkedin, Mail } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useEffect, useRef } from 'react';
+
+// Inline logo map — arrow comes first, then logo, then role
+const companyLogos: Record<string, React.ReactNode> = {
+    Shopify: (
+        <Image
+            src="/shopify-logo.png"
+            alt="Shopify"
+            width={64}
+            height={24}
+            className="object-contain max-h-6 w-auto invert mix-blend-screen opacity-70 group-hover:opacity-100 transition-opacity"
+        />
+    ),
+    'Ernst & Young': (
+        <Image
+            src="/ernst-young-ey-logo-black-and-white.png"
+            alt="Ernst & Young"
+            width={80}
+            height={32}
+            className="object-contain max-h-7 w-auto invert mix-blend-screen opacity-70 group-hover:opacity-100 transition-opacity translate-x-1"
+        />
+    ),
+    Wipro: (
+        <Image
+            src="/Gemini_Generated_Image_hxws0qhxws0qhxws.png"
+            alt="Wipro"
+            width={64}
+            height={24}
+            className="object-contain max-h-6 w-auto invert mix-blend-screen opacity-70 group-hover:opacity-100 transition-opacity"
+        />
+    ),
+    Siemens: (
+        <span className="inline-flex items-center justify-center h-7 w-9 rounded-md text-xs font-bold tracking-tight bg-teal-500/15 text-teal-400 border border-teal-500/25 leading-none flex-shrink-0">
+            SI
+        </span>
+    ),
+    'West Berkshire Council': (
+        <span className="inline-flex items-center justify-center h-7 w-9 rounded-md text-xs font-bold tracking-tight bg-blue-500/15 text-blue-400 border border-blue-500/25 leading-none flex-shrink-0">
+            WB
+        </span>
+    ),
+};
 
 export default function HomePage() {
     const cursorGlowRef = useRef<HTMLDivElement>(null);
@@ -80,16 +122,30 @@ export default function HomePage() {
                                     {recentExperience.map((job, index) => (
                                         <div
                                             key={index}
-                                            className="flex flex-wrap items-center text-base group cursor-default hover-lift p-3 -ml-3 rounded-lg transition-all gap-y-1"
+                                            className="flex items-center group cursor-default hover-lift p-3 -ml-3 rounded-lg transition-all gap-3 min-w-0"
                                             style={{ animationDelay: `${0.3 + index * 0.1}s` }}
                                         >
-                                            <span className="text-primary/50 mr-3 flex-shrink-0 group-hover:translate-x-1 group-hover:text-primary transition-all">→</span>
-                                            <span className="text-muted-foreground group-hover:text-foreground transition-colors">
-                                                {job.role}
+                                            {/* Arrow — leftmost */}
+                                            <span className="text-primary/50 flex-shrink-0 group-hover:translate-x-1 group-hover:text-primary transition-all">→</span>
+
+                                            {/* Company logo */}
+                                            <span className="flex-shrink-0 flex items-center justify-center w-16 h-8">
+                                                {companyLogos[job.company] ?? (
+                                                    <span className="inline-flex items-center justify-center h-7 w-9 rounded-md text-xs font-bold bg-muted/50 text-muted-foreground border border-border flex-shrink-0">
+                                                        {job.company.slice(0, 2).toUpperCase()}
+                                                    </span>
+                                                )}
                                             </span>
-                                            <span className="text-muted-foreground/60 ml-2 whitespace-nowrap">
-                                                @ {job.company}
-                                            </span>
+
+                                            {/* Role + Company — stacked on mobile, inline on sm+ */}
+                                            <div className="flex flex-col sm:flex-row sm:items-center sm:gap-2 min-w-0">
+                                                <span className="text-sm md:text-base text-muted-foreground group-hover:text-foreground transition-colors">
+                                                    {job.role}
+                                                </span>
+                                                <span className="text-xs sm:text-sm text-muted-foreground/50">
+                                                    @ {job.company}
+                                                </span>
+                                            </div>
                                         </div>
                                     ))}
                                 </div>
