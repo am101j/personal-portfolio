@@ -151,6 +151,38 @@ export default function HomePage() {
                                 </div>
                             </div>
 
+                            {/* Currently Working On */}
+                            <div className="mb-10">
+                                <p className="text-xs text-muted-foreground/60 uppercase tracking-wider mb-4">currently working on</p>
+                                <div className="space-y-3">
+                                    <div
+                                        className="flex items-center group cursor-default hover-lift p-3 -ml-3 rounded-lg transition-all gap-3 min-w-0"
+                                        style={{ animationDelay: `0.6s` }}
+                                    >
+                                        <span className="text-primary/50 flex-shrink-0 group-hover:translate-x-1 group-hover:text-primary transition-all">→</span>
+
+                                        <span className="flex-shrink-0 flex items-center justify-center w-16 h-8">
+                                            <Image
+                                                src="/buildbane-logo.svg"
+                                                alt="BuildBane"
+                                                width={64}
+                                                height={24}
+                                                className="object-contain max-h-6 w-auto brightness-0 invert opacity-70 group-hover:opacity-100 transition-opacity"
+                                            />
+                                        </span>
+
+                                        <div className="flex flex-col min-w-0">
+                                            <Link href="https://buildbane.com" target="_blank" className="text-sm md:text-base text-muted-foreground group-hover:text-foreground transition-colors hover:underline">
+                                                BuildBane
+                                            </Link>
+                                            <span className="text-xs sm:text-sm text-muted-foreground/50 truncate">
+                                                The network for building startups together
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             {/* Social Links with hover effects */}
                             <div className="flex gap-5">
                                 <Link
