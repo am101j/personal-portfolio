@@ -152,6 +152,19 @@ Certifications: IDEA Silver Award- Digital and Enterprise Skills. Qualified for 
   ],
   projects: [
     {
+      title: 'BuildBane',
+      summary: 'A collaborative network and marketplace designed for building startups together. Connects creators and developers to gain real-world startup experience.',
+      technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
+      description: [
+        'Architected a collaborative platform enabling users to post projects, discover opportunities, and team up to build startups together.',
+        'Developed a marketplace ecosystem that connects individuals seeking real-world startup experience with founders and ongoing projects.'
+      ],
+      link: 'https://buildbane.com',
+      github: '#',
+      image: 'https://i.postimg.cc/DZy3jS1C/Buildbane-preview.png',
+      "data-ai-hint": "startup collaboration marketplace"
+    },
+    {
       title: 'OffsetAI - Multi-Agent Financial Intelligence Platform',
       summary: 'Autonomous investment assistant automating financial research by synthesizing live market data, news sentiment, and private portfolio files.',
       technologies: ['Next.js 14', 'Python', 'FastAPI', 'LangGraph', 'Gemini 2.0', 'Pinecone', 'MCP', 'Supabase'],
