@@ -172,9 +172,12 @@ export default function HomePage() {
                                         </span>
 
                                         <div className="flex flex-col min-w-0">
-                                            <Link href="https://buildbane.com" target="_blank" className="text-sm md:text-base text-muted-foreground group-hover:text-foreground transition-colors hover:underline">
-                                                BuildBane
-                                            </Link>
+                                            <div className="flex items-center gap-2">
+                                                <Link href="https://buildbane.com" target="_blank" className="text-sm md:text-base text-muted-foreground group-hover:text-foreground transition-colors hover:underline">
+                                                    BuildBane
+                                                </Link>
+                                                <span className="text-xs text-primary/70">· 1,000+ users</span>
+                                            </div>
                                             <span className="text-xs sm:text-sm text-muted-foreground/50 truncate">
                                                 The network for building startups together
                                             </span>
