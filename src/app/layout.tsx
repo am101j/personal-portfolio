@@ -6,7 +6,7 @@ import { resumeData } from '@/lib/resume-data';
 import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata: Metadata = {
-  title: `My Canvas | ${resumeData.name}`,
+  title: `${resumeData.name}`,
   description: `Personal Portfolio of ${resumeData.name}`,
 };
 
