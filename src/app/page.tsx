@@ -17,7 +17,7 @@ const companyLogos: Record<string, React.ReactNode> = {
             alt="Shopify"
             width={64}
             height={24}
-            className="object-contain max-h-6 w-auto invert mix-blend-screen opacity-70 group-hover:opacity-100 transition-opacity"
+            className="object-contain max-h-6 w-auto dark:invert dark:mix-blend-screen opacity-70 group-hover:opacity-100 transition-opacity"
         />
     ),
     'Ernst & Young': (
@@ -26,7 +26,7 @@ const companyLogos: Record<string, React.ReactNode> = {
             alt="Ernst & Young"
             width={80}
             height={32}
-            className="object-contain max-h-7 w-auto invert mix-blend-screen opacity-70 group-hover:opacity-100 transition-opacity translate-x-1"
+            className="object-contain max-h-7 w-auto dark:invert dark:mix-blend-screen opacity-70 group-hover:opacity-100 transition-opacity translate-x-1"
         />
     ),
     Wipro: (
@@ -35,16 +35,16 @@ const companyLogos: Record<string, React.ReactNode> = {
             alt="Wipro"
             width={64}
             height={24}
-            className="object-contain max-h-6 w-auto invert mix-blend-screen opacity-70 group-hover:opacity-100 transition-opacity"
+            className="object-contain max-h-6 w-auto dark:invert dark:mix-blend-screen opacity-70 group-hover:opacity-100 transition-opacity"
         />
     ),
     Siemens: (
-        <span className="inline-flex items-center justify-center h-7 w-9 rounded-md text-xs font-bold tracking-tight bg-teal-500/15 text-teal-400 border border-teal-500/25 leading-none flex-shrink-0">
+        <span className="inline-flex items-center justify-center h-7 w-9 rounded-md text-xs font-bold tracking-tight bg-teal-500/15 text-teal-700 dark:text-teal-400 border border-teal-500/25 leading-none flex-shrink-0">
             SI
         </span>
     ),
     'West Berkshire Council': (
-        <span className="inline-flex items-center justify-center h-7 w-9 rounded-md text-xs font-bold tracking-tight bg-blue-500/15 text-blue-400 border border-blue-500/25 leading-none flex-shrink-0">
+        <span className="inline-flex items-center justify-center h-7 w-9 rounded-md text-xs font-bold tracking-tight bg-blue-500/15 text-blue-700 dark:text-blue-400 border border-blue-500/25 leading-none flex-shrink-0">
             WB
         </span>
     ),
@@ -77,14 +77,15 @@ export default function HomePage() {
                 ref={cursorGlowRef}
                 className="pointer-events-none fixed w-[500px] h-[500px] -translate-x-1/2 -translate-y-1/2 z-0"
                 style={{
-                    background: 'radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%)',
+                    background: 'radial-gradient(circle, hsl(var(--primary) / var(--glow-strength)) 0%, transparent 70%)',
                 }}
             />
 
             {/* Noise texture overlay */}
             <div
-                className="fixed inset-0 z-0 opacity-[0.03] pointer-events-none"
+                className="fixed inset-0 z-0 pointer-events-none"
                 style={{
+                    opacity: 'var(--noise-opacity)',
                     backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
                 }}
             />
@@ -106,7 +107,7 @@ export default function HomePage() {
                             {/* Minimal Intro with gradient text */}
                             <h1 className="text-4xl md:text-5xl font-serif mb-6">
                                 hey, i'm{' '}
-                                <span className="bg-gradient-to-r from-primary via-emerald-400 to-primary bg-[length:200%_auto] animate-shimmer bg-clip-text text-transparent">
+                                <span className="bg-gradient-to-r from-primary via-emerald-500 dark:via-emerald-400 to-primary bg-[length:200%_auto] animate-shimmer bg-clip-text text-transparent">
                                     abeer
                                 </span>
                                 .
@@ -117,7 +118,7 @@ export default function HomePage() {
 
                             {/* Experience with badges */}
                             <div className="mb-10">
-                                <p className="text-xs text-muted-foreground/60 uppercase tracking-wider mb-4">experience</p>
+                                <p className="text-xs text-muted-foreground dark:text-muted-foreground/60 uppercase tracking-wider mb-4">experience</p>
                                 <div className="space-y-3">
                                     {recentExperience.map((job, index) => (
                                         <div
@@ -126,7 +127,7 @@ export default function HomePage() {
                                             style={{ animationDelay: `${0.3 + index * 0.1}s` }}
                                         >
                                             {/* Arrow — leftmost */}
-                                            <span className="text-primary/50 flex-shrink-0 group-hover:translate-x-1 group-hover:text-primary transition-all">→</span>
+                                            <span className="text-primary dark:text-primary/50 flex-shrink-0 group-hover:translate-x-1 group-hover:text-primary transition-all">→</span>
 
                                             {/* Company logo */}
                                             <span className="flex-shrink-0 flex items-center justify-center w-16 h-8">
@@ -142,7 +143,7 @@ export default function HomePage() {
                                                 <span className="text-sm md:text-base text-muted-foreground group-hover:text-foreground transition-colors">
                                                     {job.role}
                                                 </span>
-                                                <span className="text-xs sm:text-sm text-muted-foreground/50">
+                                                <span className="text-xs sm:text-sm text-muted-foreground dark:text-muted-foreground/50">
                                                     @ {job.company}
                                                 </span>
                                             </div>
@@ -153,13 +154,13 @@ export default function HomePage() {
 
                             {/* Currently Working On */}
                             <div className="mb-10">
-                                <p className="text-xs text-muted-foreground/60 uppercase tracking-wider mb-4">currently working on</p>
+                                <p className="text-xs text-muted-foreground dark:text-muted-foreground/60 uppercase tracking-wider mb-4">currently working on</p>
                                 <div className="space-y-3">
                                     <div
                                         className="flex items-center group cursor-default hover-lift p-3 -ml-3 rounded-lg transition-all gap-3 min-w-0"
                                         style={{ animationDelay: `0.6s` }}
                                     >
-                                        <span className="text-primary/50 flex-shrink-0 group-hover:translate-x-1 group-hover:text-primary transition-all">→</span>
+                                        <span className="text-primary dark:text-primary/50 flex-shrink-0 group-hover:translate-x-1 group-hover:text-primary transition-all">→</span>
 
                                         <span className="flex-shrink-0 flex items-center justify-center w-16 h-8">
                                             <Image
@@ -167,7 +168,7 @@ export default function HomePage() {
                                                 alt="BuildBane"
                                                 width={64}
                                                 height={24}
-                                                className="object-contain max-h-6 w-auto brightness-0 invert opacity-70 group-hover:opacity-100 transition-opacity"
+                                                className="object-contain max-h-6 w-auto brightness-0 dark:invert opacity-70 group-hover:opacity-100 transition-opacity"
                                             />
                                         </span>
 
@@ -176,9 +177,9 @@ export default function HomePage() {
                                                 <Link href="https://buildbane.com" target="_blank" className="text-sm md:text-base text-muted-foreground group-hover:text-foreground transition-colors hover:underline">
                                                     BuildBane
                                                 </Link>
-                                                <span className="text-xs text-primary/70">· 1,000+ users</span>
+                                                <span className="text-xs text-primary dark:text-primary/70">· 1,000+ users</span>
                                             </div>
-                                            <span className="text-xs sm:text-sm text-muted-foreground/50 truncate">
+                                            <span className="text-xs sm:text-sm text-muted-foreground dark:text-muted-foreground/50 truncate">
                                                 The network for building startups together
                                             </span>
                                         </div>
@@ -191,7 +192,7 @@ export default function HomePage() {
                                 <Link
                                     href={resumeData.contact.github}
                                     target="_blank"
-                                    className="text-muted-foreground hover:text-primary hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(16,185,129,0.5)] transition-all duration-300"
+                                    className="text-muted-foreground hover:text-primary hover:scale-110 hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.5)] transition-all duration-300"
                                     aria-label="GitHub"
                                 >
                                     <Github className="w-5 h-5" />
@@ -199,14 +200,14 @@ export default function HomePage() {
                                 <Link
                                     href={resumeData.contact.linkedin}
                                     target="_blank"
-                                    className="text-muted-foreground hover:text-primary hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(16,185,129,0.5)] transition-all duration-300"
+                                    className="text-muted-foreground hover:text-primary hover:scale-110 hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.5)] transition-all duration-300"
                                     aria-label="LinkedIn"
                                 >
                                     <Linkedin className="w-5 h-5" />
                                 </Link>
                                 <Link
                                     href={`mailto:${resumeData.contact.email}`}
-                                    className="text-muted-foreground hover:text-primary hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(16,185,129,0.5)] transition-all duration-300"
+                                    className="text-muted-foreground hover:text-primary hover:scale-110 hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.5)] transition-all duration-300"
                                     aria-label="Email"
                                 >
                                     <Mail className="w-5 h-5" />
@@ -215,7 +216,7 @@ export default function HomePage() {
 
                             {/* Tech Stack Marquee */}
                             <div className="mt-12 w-full max-w-lg">
-                                <p className="text-xs text-muted-foreground/60 uppercase tracking-wider mb-4">technical arsenal</p>
+                                <p className="text-xs text-muted-foreground dark:text-muted-foreground/60 uppercase tracking-wider mb-4">technical arsenal</p>
                                 <TechStack />
                             </div>
                         </div>
@@ -231,7 +232,7 @@ export default function HomePage() {
             </main>
 
             {/* Minimal Footer */}
-            <footer className="py-6 px-6 border-t border-[#111] relative z-10">
+            <footer className="py-6 px-6 border-t border-border dark:border-[#111] relative z-10">
                 <div className="max-w-6xl mx-auto text-center text-xs text-muted-foreground">
                     <p>© {new Date().getFullYear()} {resumeData.name}</p>
                 </div>

@@ -9,7 +9,7 @@ export default function ExperiencePage() {
   const experience = resumeData.experience.filter(job => job.company !== 'GeeseHacks');
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#0a0a0a]">
+    <div className="flex flex-col min-h-screen bg-background dark:bg-[#0a0a0a]">
       <MinimalHeader />
 
       <main className="flex-grow pt-32 pb-20 px-4 md:px-8">

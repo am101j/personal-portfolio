@@ -61,7 +61,7 @@ export function ProjectsSummarySection() {
                     data-ai-hint={project['data-ai-hint']}
                   />
                 ) : (
-                  <div className="w-full h-full bg-[#1a1a1a] flex items-center justify-center text-muted-foreground">
+                  <div className="w-full h-full bg-muted dark:bg-[#1a1a1a] flex items-center justify-center text-muted-foreground">
                     No Preview
                   </div>
                 )}

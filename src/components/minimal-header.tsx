@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { resumeData } from '@/lib/resume-data';
 import { Menu, X } from 'lucide-react';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 export function MinimalHeader() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -68,7 +69,7 @@ export function MinimalHeader() {
                 </nav>
 
                 {/* Desktop right links */}
-                <div className="hidden md:flex items-center gap-6">
+                <div className="hidden md:flex items-center gap-6 -mr-2">
                     <a
                         href={resumeData.resumeUrl}
                         target="_blank"
@@ -83,16 +84,20 @@ export function MinimalHeader() {
                     >
                         Contact
                     </Link>
+                    <ThemeToggle />
                 </div>
 
-                {/* Mobile hamburger */}
-                <button
-                    className="md:hidden text-muted-foreground hover:text-foreground transition-colors"
-                    onClick={() => setMobileMenuOpen(prev => !prev)}
-                    aria-label="Toggle menu"
-                >
-                    {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-                </button>
+                {/* Mobile: theme toggle + hamburger */}
+                <div className="flex md:hidden items-center gap-1 -mr-2">
+                    <ThemeToggle />
+                    <button
+                        className="w-9 h-9 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
+                        onClick={() => setMobileMenuOpen(prev => !prev)}
+                        aria-label="Toggle menu"
+                    >
+                        {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                    </button>
+                </div>
             </div>
 
             {/* Mobile dropdown */}

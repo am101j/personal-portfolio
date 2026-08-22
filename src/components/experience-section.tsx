@@ -70,7 +70,7 @@ export function ExperienceSection({ summary = false }: ExperienceSectionProps) {
                       <ul className="space-y-2 text-sm">
                         {job.description.map((point, i) => (
                           <li key={i} className="flex items-start gap-3">
-                            <CheckCircle className="h-5 w-5 text-accent mt-0.5 flex-shrink-0" />
+                            <CheckCircle className="h-5 w-5 text-primary dark:text-accent mt-0.5 flex-shrink-0" />
                             <span>{point}</span>
                           </li>
                         ))}

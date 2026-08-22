@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { resumeData } from '@/lib/resume-data';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 export function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -72,13 +73,16 @@ export function Header() {
                     </Link>
                 </nav>
 
-                {/* Simple contact link */}
-                <Link
-                    href={`mailto:${resumeData.contact.email}`}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
-                >
-                    Contact
-                </Link>
+                {/* Simple contact link + theme toggle */}
+                <div className="flex items-center gap-4 -mr-2">
+                    <Link
+                        href={`mailto:${resumeData.contact.email}`}
+                        className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
+                    >
+                        Contact
+                    </Link>
+                    <ThemeToggle />
+                </div>
             </div>
         </header>
     );

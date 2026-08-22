@@ -4,28 +4,38 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 224 71.4% 4.1%;
+    /* Light theme — warm paper ground, emerald accent darkened for contrast */
+    --background: 150 20% 98.5%;
+    --foreground: 224 40% 11%;
     --card: 0 0% 100%;
-    --card-foreground: 224 71.4% 4.1%;
+    --card-foreground: 224 40% 11%;
     --popover: 0 0% 100%;
-    --popover-foreground: 224 71.4% 4.1%;
-    --primary: 160 84% 39%;
-    --primary-foreground: 210 20% 98%;
-    --secondary: 220 14.3% 95.9%;
-    --secondary-foreground: 220.9 39.3% 11%;
-    --muted: 220 14.3% 95.9%;
-    --muted-foreground: 220 8.9% 46.1%;
-    --accent: 220 14.3% 95.9%;
-    --accent-foreground: 220.9 39.3% 11%;
-    --destructive: 0 84.2% 60.2%;
+    --popover-foreground: 224 40% 11%;
+    --primary: 160 84% 27%;
+    --primary-foreground: 150 30% 98%;
+    --secondary: 155 16% 94.5%;
+    --secondary-foreground: 224 35% 15%;
+    --muted: 155 16% 94.5%;
+    --muted-foreground: 215 14% 38%;
+    --accent: 155 20% 93%;
+    --accent-foreground: 224 35% 15%;
+    --destructive: 0 72% 45%;
     --destructive-foreground: 210 20% 98%;
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 160 84% 39%;
+    --border: 155 12% 88%;
+    --input: 155 12% 88%;
+    --ring: 160 84% 27%;
     --radius: 0.5rem;
-    --crimson-mango: 25 95% 53%;
-    --terminal-glow: 160 84% 39%;
+    --crimson-mango: 25 90% 42%;
+    --terminal-glow: 160 84% 27%;
+
+    /* Theme-adaptive effect tokens (consumed by utilities + components) */
+    --lift-shadow: 220 40% 20%;
+    --lift-shadow-opacity: 0.10;
+    --noise-opacity: 0.02;
+    --glow-strength: 0.10;
+    --grid-line: 224 20% 50%;
+    --surface-veil: 0 0% 100%;
+    --surface-veil-opacity: 0.70;
   }
 
   .dark {
@@ -50,6 +60,15 @@
     --ring: 160 84% 39%;
     --crimson-mango: 25 95% 53%;
     --terminal-glow: 160 84% 39%;
+
+    /* Theme-adaptive effect tokens (consumed by utilities + components) */
+    --lift-shadow: 0 0% 0%;
+    --lift-shadow-opacity: 0.30;
+    --noise-opacity: 0.03;
+    --glow-strength: 0.08;
+    --grid-line: 0 0% 100%;
+    --surface-veil: 0 0% 0%;
+    --surface-veil-opacity: 0.40;
   }
 }
 
@@ -248,7 +267,7 @@
 
   .hover-lift:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px hsl(var(--lift-shadow) / var(--lift-shadow-opacity));
   }
 
   /* Logo scroll marquee */
@@ -274,5 +293,95 @@
 @layer components {
   .bg-neon-gradient {
     background-image: linear-gradient(to right, hsl(175, 80%, 40%), hsl(217.2, 91.2%, 59.8%));
+  }
+}
+
+
+/* ---------------------------------------------------------------------------
+   Theme switching animation
+   The wave is a circular clip-path reveal of the *new* theme, radiating from
+   the toggle button. View-transition pseudo-elements live on the root element,
+   so these rules must stay outside @layer to keep their specificity.
+   --------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: no-preference) {
+
+  /* Replace the default cross-fade: the old theme sits still underneath while
+     the new one is wiped over the top. */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+
+  html.theme-wave::view-transition-old(root) {
+    z-index: 1;
+  }
+
+  html.theme-wave::view-transition-new(root) {
+    z-index: 2;
+    animation: theme-wave 600ms cubic-bezier(0.33, 0, 0.2, 1) forwards;
+  }
+
+  @keyframes theme-wave {
+    from {
+      clip-path: circle(0px at var(--wave-x, 50%) var(--wave-y, 50%));
+    }
+
+    to {
+      clip-path: circle(var(--wave-r, 150vmax) at var(--wave-x, 50%) var(--wave-y, 50%));
+    }
+  }
+
+  /* The toggle rides above the wave so the icon swap stays visible throughout. */
+  ::view-transition-group(theme-toggle) {
+    z-index: 3;
+  }
+
+  ::view-transition-old(theme-toggle) {
+    animation: toggle-slide-out 320ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  ::view-transition-new(theme-toggle) {
+    animation: toggle-slide-in 320ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  @keyframes toggle-slide-out {
+    to {
+      transform: translateY(-130%);
+      opacity: 0;
+    }
+  }
+
+  @keyframes toggle-slide-in {
+    from {
+      transform: translateY(130%);
+      opacity: 0;
+    }
+  }
+
+  /* Fallback for browsers without the View Transitions API: cross-fade colours. */
+  html.theme-transition,
+  html.theme-transition *,
+  html.theme-transition *::before,
+  html.theme-transition *::after {
+    transition:
+      background-color 600ms cubic-bezier(0.33, 0, 0.2, 1),
+      border-color 600ms cubic-bezier(0.33, 0, 0.2, 1),
+      color 600ms cubic-bezier(0.33, 0, 0.2, 1),
+      fill 600ms cubic-bezier(0.33, 0, 0.2, 1),
+      stroke 600ms cubic-bezier(0.33, 0, 0.2, 1),
+      box-shadow 600ms cubic-bezier(0.33, 0, 0.2, 1) !important;
+  }
+}
+
+/* Honour a reduced-motion preference: swap instantly, no wave, no slide. */
+@media (prefers-reduced-motion: reduce) {
+
+  ::view-transition-old(root),
+  ::view-transition-new(root),
+  ::view-transition-old(theme-toggle),
+  ::view-transition-new(theme-toggle) {
+    animation: none !important;
   }
 }

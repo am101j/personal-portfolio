@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { useTheme } from 'next-themes';
 
 interface Node {
     id: string;
@@ -63,13 +64,53 @@ export function TechStackNodes() {
     const animationRef = useRef<number>();
     const [hoveredNode, setHoveredNode] = useState<string | null>(null);
     const mouseRef = useRef({ x: 0, y: 0 });
+    const [mounted, setMounted] = useState(false);
+    const { resolvedTheme } = useTheme();
+
+    useEffect(() => setMounted(true), []);
 
     useEffect(() => {
+        if (!mounted) return;
+
         const canvas = canvasRef.current;
         if (!canvas) return;
 
         const ctx = canvas.getContext('2d');
         if (!ctx) return;
+
+        const isLight = resolvedTheme === 'light';
+        // Dark keeps the original emerald-500 literal verbatim. Light reads --primary
+        // off the document so the diagram tracks the token instead of drifting from it.
+        const primary = getComputedStyle(document.documentElement)
+            .getPropertyValue('--primary')
+            .trim();
+        const accent = (alpha: number) =>
+            isLight ? `hsl(${primary} / ${alpha})` : `rgba(16, 185, 129, ${alpha})`;
+        const palette = isLight
+            ? {
+                  linkIdle: accent(0.3),
+                  linkActive: accent(0.85),
+                  // Softer halo — a bright bloom disappears on a light ground.
+                  glowInner: accent(0.16),
+                  // Solid paper disc instead of a dark slate chip.
+                  nodeFill: 'rgba(255, 255, 255, 0.92)',
+                  nodeFillHovered: accent(0.14),
+                  nodeStrokeIdle: accent(0.45),
+                  nodeStrokeActive: accent(0.9),
+                  labelIdle: 'rgba(51, 65, 85, 0.9)',
+                  labelActive: accent(1),
+              }
+            : {
+                  linkIdle: accent(0.15),
+                  linkActive: accent(0.8),
+                  glowInner: accent(0.3),
+                  nodeFill: 'rgba(30, 41, 59, 0.8)',
+                  nodeFillHovered: accent(0.3),
+                  nodeStrokeIdle: accent(0.3),
+                  nodeStrokeActive: accent(0.8),
+                  labelIdle: 'rgba(148, 163, 184, 0.8)',
+                  labelActive: accent(1),
+              };
 
         // Set canvas size
         const resize = () => {
@@ -172,9 +213,7 @@ export function TechStackNodes() {
                 ctx.beginPath();
                 ctx.moveTo(fromNode.x, fromNode.y);
                 ctx.lineTo(toNode.x, toNode.y);
-                ctx.strokeStyle = isHighlighted
-                    ? 'rgba(16, 185, 129, 0.8)'
-                    : 'rgba(16, 185, 129, 0.15)';
+                ctx.strokeStyle = isHighlighted ? palette.linkActive : palette.linkIdle;
                 ctx.lineWidth = isHighlighted ? 2 : 1;
                 ctx.stroke();
 
@@ -187,7 +226,7 @@ export function TechStackNodes() {
 
                     ctx.beginPath();
                     ctx.arc(pulseX, pulseY, 3, 0, Math.PI * 2);
-                    ctx.fillStyle = 'rgba(16, 185, 129, 0.8)';
+                    ctx.fillStyle = palette.linkActive;
                     ctx.fill();
                 }
             }
@@ -205,8 +244,8 @@ export function TechStackNodes() {
                     ctx.beginPath();
                     ctx.arc(node.x, node.y, 28, 0, Math.PI * 2);
                     const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, 28);
-                    gradient.addColorStop(0, 'rgba(16, 185, 129, 0.3)');
-                    gradient.addColorStop(1, 'rgba(16, 185, 129, 0)');
+                    gradient.addColorStop(0, palette.glowInner);
+                    gradient.addColorStop(1, accent(0));
                     ctx.fillStyle = gradient;
                     ctx.fill();
                 }
@@ -214,11 +253,11 @@ export function TechStackNodes() {
                 // Node circle
                 ctx.beginPath();
                 ctx.arc(node.x, node.y, isHovered ? 24 : 20, 0, Math.PI * 2);
-                ctx.fillStyle = isHovered ? 'rgba(16, 185, 129, 0.3)' : 'rgba(30, 41, 59, 0.8)';
+                ctx.fillStyle = isHovered ? palette.nodeFillHovered : palette.nodeFill;
                 ctx.fill();
                 ctx.strokeStyle = isHovered || isConnected
-                    ? 'rgba(16, 185, 129, 0.8)'
-                    : 'rgba(16, 185, 129, 0.3)';
+                    ? palette.nodeStrokeActive
+                    : palette.nodeStrokeIdle;
                 ctx.lineWidth = isHovered ? 2 : 1;
                 ctx.stroke();
 
@@ -227,8 +266,8 @@ export function TechStackNodes() {
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 ctx.fillStyle = isHovered || isConnected
-                    ? 'rgba(16, 185, 129, 1)'
-                    : 'rgba(148, 163, 184, 0.8)';
+                    ? palette.labelActive
+                    : palette.labelIdle;
                 ctx.fillText(node.label, node.x, node.y);
             }
 
@@ -244,13 +283,13 @@ export function TechStackNodes() {
                 cancelAnimationFrame(animationRef.current);
             }
         };
-    }, [hoveredNode]);
+    }, [hoveredNode, mounted, resolvedTheme]);
 
     return (
         <div className="w-full max-w-2xl mx-auto">
             <canvas
                 ref={canvasRef}
-                className="w-full h-[300px] rounded-lg border border-border/30 cursor-crosshair"
+                className="w-full h-[300px] rounded-lg border border-[hsl(var(--border)/0.9)] dark:border-border/30 cursor-crosshair"
                 style={{ background: 'transparent' }}
             />
             <p className="text-center text-xs text-muted-foreground mt-3">

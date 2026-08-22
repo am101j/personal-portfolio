@@ -46,18 +46,18 @@ const SkillBadge = ({ name }: { name: string }) => {
     const [imgError, setImgError] = useState(false);
 
     return (
-        <div className="flex items-center gap-2 px-3 py-1.5 bg-secondary/30 backdrop-blur-sm rounded-full border border-border/40 hover:border-primary/20 hover:bg-secondary/50 transition-all duration-300 mx-2 whitespace-nowrap group">
+        <div className="flex items-center gap-2 px-3 py-1.5 bg-secondary dark:bg-secondary/30 backdrop-blur-sm rounded-full border border-border dark:border-border/40 hover:border-primary/40 dark:hover:border-primary/20 hover:bg-accent dark:hover:bg-secondary/50 transition-all duration-300 mx-2 whitespace-nowrap group">
             {!imgError && (
                 <img
                     src={iconUrl}
                     alt=""
-                    className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-all 
-                             grayscale group-hover:grayscale-0 
+                    className="w-3.5 h-3.5 opacity-85 dark:opacity-60 group-hover:opacity-100 transition-all
+                             grayscale group-hover:grayscale-0
                              dark:brightness-0 dark:invert dark:group-hover:brightness-100 dark:group-hover:invert-0"
                     onError={() => setImgError(true)}
                 />
             )}
-            <span className="text-xs font-medium text-muted-foreground/80 group-hover:text-foreground transition-colors">{name}</span>
+            <span className="text-xs font-medium text-muted-foreground dark:text-muted-foreground/80 group-hover:text-foreground transition-colors">{name}</span>
         </div>
     );
 };

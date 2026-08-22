@@ -28,12 +28,16 @@ function generateContributionData() {
     return data;
 }
 
+// Light values come first, `dark:` restores the original dark-mode ramp.
+// In light mode --secondary sits almost on top of --background, so the empty
+// cell uses a foreground tint instead, and the filled steps are pushed a notch
+// stronger since low primary alphas wash out on a bright ground.
 const CONTRIBUTION_COLORS = [
-    'bg-secondary/50',      // 0 contributions
-    'bg-primary/20',        // 1-2 contributions
-    'bg-primary/40',        // 3-5 contributions
-    'bg-primary/60',        // 6-8 contributions
-    'bg-primary',           // 9+ contributions
+    'bg-[hsl(var(--foreground)/0.08)] dark:bg-secondary/50',  // 0 contributions
+    'bg-[hsl(var(--primary)/0.30)] dark:bg-primary/20',       // 1-2 contributions
+    'bg-[hsl(var(--primary)/0.50)] dark:bg-primary/40',       // 3-5 contributions
+    'bg-[hsl(var(--primary)/0.70)] dark:bg-primary/60',       // 6-8 contributions
+    'bg-primary',                                            // 9+ contributions
 ];
 
 export function GitHubActivity({ username = 'am101j' }: { username?: string }) {
@@ -69,7 +73,7 @@ export function GitHubActivity({ username = 'am101j' }: { username?: string }) {
                             {week.map((level, dayIndex) => (
                                 <div
                                     key={dayIndex}
-                                    className={`w-[10px] h-[10px] rounded-sm ${CONTRIBUTION_COLORS[level]} transition-colors hover:ring-1 hover:ring-primary/50`}
+                                    className={`w-[10px] h-[10px] rounded-sm ${CONTRIBUTION_COLORS[level]} transition-colors hover:ring-1 hover:ring-[hsl(var(--primary)/0.7)] dark:hover:ring-primary/50`}
                                     title={`${level * 3} contributions`}
                                 />
                             ))}

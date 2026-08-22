@@ -36,7 +36,7 @@ export function TailoredResumeDisplay({ tailoredResume }: TailoredResumeDisplayP
                     <ul className="space-y-4">
                         {tailoredResume.keyAchievements.map((ach, index) => (
                             <li key={index} className="flex items-start gap-4 p-3 rounded-md border bg-background/50">
-                                <Check className="h-5 w-5 text-accent mt-1 flex-shrink-0" />
+                                <Check className="h-5 w-5 text-primary dark:text-accent mt-1 flex-shrink-0" />
                                 <div>
                                     <div className="font-semibold text-foreground flex items-center gap-2">
                                         <Building className="h-4 w-4 text-muted-foreground" />

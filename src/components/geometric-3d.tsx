@@ -1,16 +1,38 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useTheme } from 'next-themes';
 
 export function Geometric3D() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
+    const [mounted, setMounted] = useState(false);
+    const { resolvedTheme } = useTheme();
+
+    useEffect(() => setMounted(true), []);
 
     useEffect(() => {
+        if (!mounted) return;
+
         const canvas = canvasRef.current;
         if (!canvas) return;
 
         const ctx = canvas.getContext('2d');
         if (!ctx) return;
+
+        const isLight = resolvedTheme === 'light';
+        // Dark keeps the original emerald-500 literal verbatim. Light reads --primary
+        // off the document so the wireframe tracks the token instead of drifting from it.
+        const primary = getComputedStyle(document.documentElement)
+            .getPropertyValue('--primary')
+            .trim();
+        const stroke = (alpha: number) =>
+            isLight ? `hsl(${primary} / ${alpha})` : `rgba(16, 185, 129, ${alpha})`;
+        // Light needs a touch more weight to hold up against a bright surface.
+        const outerAlpha = isLight ? 0.75 : 0.6;
+        const innerAlpha = isLight ? 0.4 : 0.3;
+        const vertexAlpha = isLight ? 0.9 : 0.8;
+
+        let frameId = 0;
 
         // Set canvas size
         const resize = () => {
@@ -76,7 +98,7 @@ export function Geometric3D() {
             angleZ += 0.002;
 
             // Draw outer cube
-            ctx.strokeStyle = 'rgba(16, 185, 129, 0.6)';
+            ctx.strokeStyle = stroke(outerAlpha);
             ctx.lineWidth = 1.5;
 
             for (const [i, j] of edges) {
@@ -92,7 +114,7 @@ export function Geometric3D() {
             }
 
             // Draw inner cube
-            ctx.strokeStyle = 'rgba(16, 185, 129, 0.3)';
+            ctx.strokeStyle = stroke(innerAlpha);
             ctx.lineWidth = 1;
 
             for (const [i, j] of edges) {
@@ -108,7 +130,7 @@ export function Geometric3D() {
             }
 
             // Draw vertices as dots
-            ctx.fillStyle = 'rgba(16, 185, 129, 0.8)';
+            ctx.fillStyle = stroke(vertexAlpha);
             for (const v of vertices) {
                 const rotated = rotate(...v as [number, number, number]);
                 const [x, y] = project(...rotated);
@@ -117,11 +139,14 @@ export function Geometric3D() {
                 ctx.fill();
             }
 
-            requestAnimationFrame(animate);
+            frameId = requestAnimationFrame(animate);
         };
 
         animate();
-    }, []);
+
+        // Cancel on cleanup so a theme flip re-inits instead of stacking loops.
+        return () => cancelAnimationFrame(frameId);
+    }, [mounted, resolvedTheme]);
 
     return (
         <canvas

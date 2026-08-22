@@ -158,10 +158,12 @@ export function InteractiveTerminal() {
             className="w-full max-w-2xl mx-auto"
             onClick={focusInput}
         >
-            {/* Terminal Window */}
-            <div className="rounded-lg border border-border/50 bg-background/80 backdrop-blur-sm overflow-hidden shadow-2xl shadow-primary/5">
+            {/* Terminal Window — themed like a light editor pane on light, the original
+                dark console on dark. The palette tokens already resolve per theme, so the
+                chrome only needs the alpha-tuned dark overrides. */}
+            <div className="rounded-lg border border-border bg-card backdrop-blur-sm overflow-hidden shadow-2xl shadow-[color:hsl(220_40%_20%/0.12)] dark:border-border/50 dark:bg-background/80 dark:shadow-primary/5">
                 {/* Terminal Header */}
-                <div className="flex items-center gap-2 px-4 py-3 bg-secondary/50 border-b border-border/50">
+                <div className="flex items-center gap-2 px-4 py-3 bg-secondary border-b border-border dark:bg-secondary/50 dark:border-border/50">
                     <div className="flex gap-1.5">
                         <div className="w-3 h-3 rounded-full bg-red-500/80" />
                         <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
@@ -183,7 +185,7 @@ export function InteractiveTerminal() {
                             className={`mb-1 ${line.type === 'input'
                                 ? 'text-primary'
                                 : line.type === 'error'
-                                    ? 'text-red-400'
+                                    ? 'text-red-600 dark:text-red-400'
                                     : 'text-muted-foreground'
                                 }`}
                         >
@@ -199,7 +201,7 @@ export function InteractiveTerminal() {
                             type="text"
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
-                            className="flex-1 bg-transparent outline-none text-foreground font-mono caret-primary"
+                            className="flex-1 bg-transparent outline-none text-foreground caret-primary font-mono"
                             autoFocus
                             disabled={isTyping}
                             placeholder={isTyping ? '' : 'type a command...'}

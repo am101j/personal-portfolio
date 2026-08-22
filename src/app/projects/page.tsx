@@ -9,7 +9,7 @@ import Image from "next/image";
 
 export default function ProjectsPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-[#0a0a0a]">
+    <div className="flex flex-col min-h-screen bg-background dark:bg-[#0a0a0a]">
       <MinimalHeader />
 
       <main className="flex-grow pt-32 pb-20 px-4 md:px-8">
@@ -24,12 +24,12 @@ export default function ProjectsPage() {
             {resumeData.projects.map((project, index) => (
               <div
                 key={index}
-                className="group bg-[#111] rounded-lg border border-[#222] overflow-hidden hover:border-primary/30 transition-all duration-300 hover-lift animate-fade-in-up"
+                className="group bg-card dark:bg-[#111] rounded-lg border border-border dark:border-[#222] overflow-hidden hover:border-primary/30 transition-all duration-300 hover-lift animate-fade-in-up"
                 style={{ animationDelay: `${0.1 + index * 0.1}s` }}
               >
                 {/* Project Image */}
                 {/* Project Video or Image */}
-                <div className="relative aspect-video bg-[#0a0a0a] overflow-hidden">
+                <div className="relative aspect-video bg-muted dark:bg-[#0a0a0a] overflow-hidden">
                   {/* @ts-ignore - video property added to resume-data */}
                   {project.video ? (
                     /* @ts-ignore */
@@ -61,7 +61,7 @@ export default function ProjectsPage() {
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                   ) : null}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#111] to-transparent opacity-60 pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card dark:from-[#111] to-transparent opacity-40 dark:opacity-60 pointer-events-none" />
                 </div>
 
                 {/* Project Info */}
@@ -103,7 +103,7 @@ export default function ProjectsPage() {
                     {project.technologies.slice(0, 4).map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-0.5 text-xs text-muted-foreground bg-[#1a1a1a] rounded hover:text-primary hover:bg-primary/10 transition-colors"
+                        className="px-2 py-0.5 text-xs text-muted-foreground bg-muted dark:bg-[#1a1a1a] rounded hover:text-primary hover:bg-primary/10 transition-colors"
                       >
                         {tech}
                       </span>
