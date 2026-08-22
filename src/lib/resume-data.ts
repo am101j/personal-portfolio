@@ -25,7 +25,7 @@ Frameworks and Libraries: Spring Boot, Node.js, OpenCV, TensorFlow, NumPy, Matpl
 Developer Tools: Git, VS Code, PyCharm, IntelliJ IDEA, Google Cloud Platform, Spark, BigQuery, AWS, DataDog
 
 EXPERIENCE
-Shopify (May 2026 – Present) | Ottawa, Canada
+Shopify (May 2026 – August 2026) | Ottawa, Canada
 - Building and shipping features on the Flow Tasks team, enabling merchants to automate complex workflows at scale
 - Contributing to the Shopify Flow automation platform, improving task execution reliability and merchant experience
 
@@ -81,7 +81,7 @@ Certifications: IDEA Silver Award- Digital and Enterprise Skills. Qualified for 
     {
       company: 'Shopify',
       role: 'Software Engineer Intern',
-      duration: 'May 2026 – Present',
+      duration: 'May 2026 – August 2026',
       location: 'Toronto, Canada',
       technologies: ['Ruby on Rails', 'React', 'GraphQL', 'TypeScript', 'MySQL', 'Git'],
       description: [
