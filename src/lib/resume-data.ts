@@ -282,24 +282,6 @@ Certifications: IDEA Silver Award- Digital and Enterprise Skills. Qualified for 
       "data-ai-hint": "personal finance dashboard"
     },
     {
-      title: 'Healthcare Dashboard',
-      summary: 'Power BI dashboard for monitoring hospital performance, patient metrics, billing trends, length of stay, and medication tracking.',
-      technologies: ['Power BI', 'DAX', 'Data Modeling', 'SQL', 'Time Intelligence'],
-      description: [
-        'Comprehensive hospital performance monitoring with total patients and admissions tracking.',
-        'Billing trends analysis with Year-over-Year (%YoY) comparisons for financial insights.',
-        'Average Length of Stay (LOS) metrics for operational efficiency analysis.',
-        'Top hospitals, doctors, and admission types analytics for benchmarking.',
-        'Medication tracking per patient for healthcare compliance monitoring.',
-        'Star schema data model with Fact Hospital, Dim Patient, Dim Hospital, and Dim Medication tables.',
-        'DateTable implementation for advanced time intelligence calculations.'
-      ],
-      link: '#',
-      github: 'https://github.com/am101j/health_dashboard',
-      image: 'https://i.postimg.cc/nVTtj6QF/image.png',
-      "data-ai-hint": "healthcare analytics dashboard"
-    },
-    {
       title: 'PulseAI',
       summary: 'Real-time patient monitoring system with AI-powered vital sign analysis and automated emergency response.',
       technologies: ['React', 'TypeScript', 'Python', 'Flask', 'Computer Vision', 'Machine Learning'],
@@ -330,35 +312,6 @@ Certifications: IDEA Silver Award- Digital and Enterprise Skills. Qualified for 
       image: 'https://i.postimg.cc/KjMFhjpL/image.png',
       "data-ai-hint": "circuit board",
     },
-    {
-      title: 'WatSpot',
-      summary: 'A smart web app that helps University of Waterloo students find ideal study spots based on personal preferences.',
-      technologies: ['React', 'Node.js', 'GraphQL', 'Google Maps API'],
-      description: [
-        'Provides tailored recommendations based on preferences like noise level and amenities.',
-        'Features real-time campus maps to guide users from their location.',
-        'Simplifies the process of finding a suitable study space, saving students time.'
-      ],
-      link: '#',
-      github: 'https://github.com/am101j/WatSpot',
-      image: 'https://i.postimg.cc/j5r24vyV/406722433-07b2d8e3-d70e-4e56-b701-e78d69020785.png',
-      "data-ai-hint": "campus map study",
-    },
-    {
-      title: 'Onboarding Assistant',
-      summary: 'A Flask web application for managing employee onboarding processes, featuring role-based dashboards for HR, managers, and new hires.',
-      technologies: ['Flask', 'Python', 'SQL', 'HTML/CSS'],
-      description: [
-        'Admin Dashboard: HR and managers can view employees under their supervision and mark onboarding tasks as complete.',
-        'Employee Dashboard: New hires can view their assigned onboarding tasks and completion status.',
-        'User Authentication: Role-based access control (HR, Manager, New Hire).',
-        'Task Management: Track onboarding progress with due dates and status updates.'
-      ],
-      link: '#',
-      github: '#',
-      image: 'https://i.postimg.cc/3N4RV4FX/image.png',
-      "data-ai-hint": "employee dashboard tasks",
-    }
   ],
   education: [
     // Education data could be added here if needed for a separate section
