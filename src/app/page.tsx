@@ -99,7 +99,7 @@ export default function HomePage() {
 
             <main className="flex-grow relative z-10">
                 {/* Hero Section - Side by Side Layout */}
-                <section className="min-h-screen flex items-center px-6 md:px-12 lg:px-20 pt-16">
+                <section className="min-h-screen flex items-center px-6 md:px-12 lg:px-20 pt-40">
                     <div className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
                         {/* Left Side - Intro + Jobs */}
