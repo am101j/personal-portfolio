@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { resumeData } from '@/lib/resume-data';
 
 import { ThemeProvider } from "@/components/theme-provider";
+import { LiquidEffectAnimation } from "@/components/ui/liquid-effect-animation";
 
 export const metadata: Metadata = {
   title: `${resumeData.name}`,
@@ -29,6 +30,7 @@ export default function RootLayout({
           defaultTheme="dark"
           enableSystem={false}
         >
+          <LiquidEffectAnimation />
           {children}
           <Toaster />
         </ThemeProvider>

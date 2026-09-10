@@ -9,10 +9,10 @@ import Image from "next/image";
 
 export default function ProjectsPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-background dark:bg-[#0a0a0a]">
+    <div className="flex flex-col min-h-screen">
       <MinimalHeader />
 
-      <main className="flex-grow pt-32 pb-20 px-4 md:px-8">
+      <main className="flex-grow pt-32 pb-20 px-4 md:px-8 relative z-10">
         <div className="max-w-5xl mx-auto">
           {/* Simple heading */}
           <h1 className="text-3xl md:text-4xl font-headline font-bold mb-12 animate-slide-in-left">
