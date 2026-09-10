@@ -143,6 +143,8 @@ export function HandwritingText({
   const [font, setFont] = useState<any>(null);
   const [geom, setGeom] = useState<Geometry | null>(null);
   const [drawn, setDrawn] = useState(false);
+  // Only true once the glyphs are known to be unavailable — see the fallback below.
+  const [degraded, setDegraded] = useState(false);
   const [lengths, setLengths] = useState<number[]>([]);
   const pathRefs = useRef<(SVGPathElement | null)[]>([]);
   // useId's value carries characters that are legal in an id but awkward in a selector.
@@ -157,10 +159,14 @@ export function HandwritingText({
 
   useEffect(() => {
     let cancelled = false;
+    // If the glyphs are slow rather than broken, waiting beats flashing the fallback
+    // in a completely different typeface and then swapping it out.
+    const giveUp = window.setTimeout(() => { if (!cancelled) setDegraded(true); }, 2000);
     loadFont(fontUrl)
       .then((f) => { if (!cancelled) setFont(f); })
-      .catch(() => { /* falls back to plain text below */ });
-    return () => { cancelled = true; };
+      .catch(() => { if (!cancelled) setDegraded(true); })
+      .finally(() => window.clearTimeout(giveUp));
+    return () => { cancelled = true; window.clearTimeout(giveUp); };
   }, [fontUrl]);
 
   useEffect(() => {
@@ -206,9 +212,16 @@ export function HandwritingText({
     return () => cancelAnimationFrame(id);
   }, [geom]);
 
-  // Before the font resolves — and if it never does — the text is still readable.
+  // Before the glyphs resolve the text is held invisible rather than shown in the
+  // page's own typeface, which would flash and then be replaced. It is revealed if the
+  // font or the parser turns out to be unavailable, so this degrades to plain text
+  // rather than to nothing.
   if (!geom) {
-    return <span className={className}>{current}</span>;
+    return (
+      <span className={className} style={{ visibility: degraded ? "visible" : "hidden" }}>
+        {current}
+      </span>
+    );
   }
 
   const count = Math.max(1, geom.contours.length);
