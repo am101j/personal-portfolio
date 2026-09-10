@@ -21,7 +21,7 @@ export function ThemeToggle() {
 
     const isDark = resolvedTheme === "dark"
 
-    const toggle = React.useCallback(() => {
+    const toggle = React.useCallback((event: React.MouseEvent<HTMLButtonElement>) => {
         const root = document.documentElement
         const next = isDark ? "light" : "dark"
         const button = buttonRef.current
@@ -48,19 +48,21 @@ export function ThemeToggle() {
             return
         }
 
-        // The wave radiates from the button, so it has to reach the furthest corner.
+        // The wave starts under the pointer, falling back to the middle of the button
+        // when the toggle was reached by keyboard (where the click reports 0, 0).
         const rect = button.getBoundingClientRect()
-        const x = rect.left + rect.width / 2
-        const y = rect.top + rect.height / 2
+        const pointed = event.clientX !== 0 || event.clientY !== 0
+        const x = pointed ? event.clientX : rect.left + rect.width / 2
+        const y = pointed ? event.clientY : rect.top + rect.height / 2
         const radius = Math.hypot(
             Math.max(x, window.innerWidth - x),
             Math.max(y, window.innerHeight - y)
         )
 
-        root.style.setProperty("--wave-x", `${x}px`)
-        root.style.setProperty("--wave-y", `${y}px`)
-        root.style.setProperty("--wave-r", `${radius}px`)
-        root.classList.add("theme-wave")
+        // A data attribute, not a class: next-themes rewrites the class attribute
+        // wholesale when the theme is set, which would drop the flag mid-animation and
+        // leave the browser to fall back on its default cross-fade.
+        root.dataset.themeWave = "1"
 
         // Named only for the duration of the transition — two live elements sharing a
         // view-transition-name aborts the whole animation, and the header renders a
@@ -68,8 +70,32 @@ export function ThemeToggle() {
         button.style.viewTransitionName = "theme-toggle"
 
         const transition = doc.startViewTransition(applyTheme)
+
+        // The circle is animated from here rather than from a CSS keyframe reading
+        // custom properties. The ::view-transition pseudo-elements live in their own
+        // tree, and relying on a var to reach them is what left the wipe opening from
+        // the middle of the page instead of from the pointer.
+        transition.ready
+            .then(() => {
+                root.animate(
+                    {
+                        clipPath: [
+                            `circle(0px at ${x}px ${y}px)`,
+                            `circle(${radius}px at ${x}px ${y}px)`,
+                        ],
+                    },
+                    {
+                        duration: WAVE_MS,
+                        easing: "cubic-bezier(0.33, 0, 0.2, 1)",
+                        fill: "forwards",
+                        pseudoElement: "::view-transition-new(root)",
+                    },
+                )
+            })
+            .catch(() => { /* transition skipped; the theme still switched */ })
+
         transition.finished.finally(() => {
-            root.classList.remove("theme-wave")
+            delete root.dataset.themeWave
             button.style.viewTransitionName = ""
         })
     }, [isDark, setTheme])

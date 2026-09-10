@@ -8,6 +8,7 @@ import { Github, Linkedin, Mail } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
+import { HandwritingText } from '@/components/ui/handwriting-text';
 
 // Inline logo map — arrow comes first, then logo, then role
 const companyLogos: Record<string, React.ReactNode> = {
@@ -105,12 +106,9 @@ export default function HomePage() {
                         {/* Left Side - Intro + Jobs */}
                         <div className="animate-slide-in-left">
                             {/* Minimal Intro with gradient text */}
-                            <h1 className="text-4xl md:text-5xl font-serif mb-6">
-                                hey, i'm{' '}
-                                <span className="bg-gradient-to-r from-primary via-emerald-500 dark:via-emerald-400 to-primary bg-[length:200%_auto] animate-shimmer bg-clip-text text-transparent">
-                                    abeer
-                                </span>
-                                .
+                            <h1 className="text-4xl md:text-5xl font-serif mb-3 flex flex-wrap items-baseline gap-x-3">
+                                <HandwritingText text="hey, i'm" height="2.2em" />
+                                <HandwritingText text="abeer." height="2.2em" delay={0.5} shimmer />
                             </h1>
                             <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-10 max-w-md">
                                 {resumeData.summary}

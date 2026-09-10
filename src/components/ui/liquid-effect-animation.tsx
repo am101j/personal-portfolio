@@ -36,6 +36,8 @@ type Props = {
     roughness?: number;
     /** How brightly the surface picks up the emerald horizon. */
     envIntensity?: number;
+    /** Multiplier applied to that on a pale page, where the same value reads louder. */
+    lightIntensityScale?: number;
     /** How far the waves bend the surface texture. */
     displacementScale?: number;
     className?: string;
@@ -143,6 +145,7 @@ export function LiquidEffectAnimation({
     metalness = 0.92,
     roughness = 0.22,
     envIntensity = 1.0,
+    lightIntensityScale = 0.55,
     displacementScale = 2,
     className,
 }: Props) {
@@ -173,6 +176,12 @@ export function LiquidEffectAnimation({
             const deep = isDark ? resolveColor('hsl(var(--primary) / 0.35)', emerald) : emerald;
             const teal = mixRgb(emerald, 'rgb(4, 58, 72)', isDark ? 0.5 : 0.35);
             const mint = mixRgb(emerald, 'rgb(214, 255, 238)', isDark ? 0.5 : 0.3);
+
+            // The same reflection carries further on a pale ground, so it is pulled
+            // back to keep both themes about equally quiet.
+            app.liquidPlane.material.envMapIntensity = isDark
+                ? envIntensity
+                : envIntensity * lightIntensityScale;
 
             const surface = surfaceTexture(background);
             const environment = envTexture(sky, emerald, teal, mint, deep);
@@ -227,8 +236,11 @@ export function LiquidEffectAnimation({
                 let lastTime = 0;
 
                 const touch = (clientX: number, clientY: number, strength: number) => {
-                    const x = (clientX / window.innerWidth) * 2 - 1;
-                    const y = -(clientY / window.innerHeight) * 2 + 1;
+                    // Measured against the canvas, not the window: innerWidth includes
+                    // the scrollbar, which would drift the ripple off the cursor.
+                    const rect = canvas.getBoundingClientRect();
+                    const x = ((clientX - rect.left) / rect.width) * 2 - 1;
+                    const y = -((clientY - rect.top) / rect.height) * 2 + 1;
                     addDrop(x, y, rippleRadius, strength);
                 };
 
@@ -304,6 +316,7 @@ export function LiquidEffectAnimation({
         metalness,
         roughness,
         envIntensity,
+        lightIntensityScale,
         displacementScale,
     ]);
 
