@@ -135,13 +135,13 @@ function scaleRgb(colour: string, factor: number) {
 }
 
 export function LiquidEffectAnimation({
-    rippleRadius = 0.007,
-    rippleStrength = 0.055,
-    step = 12,
+    rippleRadius = 0.014,
+    rippleStrength = 0.016,
+    step = 9,
     maxSteps = 12,
     minBite = 0.45,
     maxBite = 1.8,
-    attenuation = 0.985,
+    attenuation = 0.988,
     metalness = 0.92,
     roughness = 0.22,
     envIntensity = 1.0,
