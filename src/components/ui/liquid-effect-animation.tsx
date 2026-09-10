@@ -144,8 +144,8 @@ export function LiquidEffectAnimation({
     attenuation = 0.988,
     metalness = 0.92,
     roughness = 0.22,
-    envIntensity = 1.0,
-    lightIntensityScale = 0.55,
+    envIntensity = 0.45,
+    lightIntensityScale = 0.5,
     displacementScale = 2,
     className,
 }: Props) {
